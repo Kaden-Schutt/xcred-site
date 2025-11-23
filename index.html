@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XCred - Account Transparency for X/Twitter</title>
+  <meta name="description" content="See who you're really talking to. XCred is a free Chrome extension that adds credibility indicators, location flags, and authenticity scores to your X/Twitter timeline.">
+  <meta name="keywords" content="Twitter, X, Chrome extension, bot detection, account verification, credibility, transparency, social media, misinformation">
+  <meta name="author" content="Will Power Media LLC">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://kaden-schutt.github.io/xcred-site/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="XCred - Account Transparency for X/Twitter">
+  <meta property="og:description" content="See who you're really talking to. Free Chrome extension with credibility indicators for every account.">
+  <meta property="og:image" content="https://kaden-schutt.github.io/xcred-site/assets/og-image.png">
+  <meta property="og:url" content="https://kaden-schutt.github.io/xcred-site/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="XCred">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="XCred - Account Transparency for X/Twitter">
+  <meta name="twitter:description" content="See who you're really talking to. Credibility indicators for every account.">
+  <meta name="twitter:image" content="https://kaden-schutt.github.io/xcred-site/assets/og-image.png">
+  <meta name="twitter:creator" content="@kadenschutt">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/logo-128.png">
+  <link rel="apple-touch-icon" href="assets/logo-128.png">
+
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#000000">
+  <meta name="msapplication-TileColor" content="#000000">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "XCred",
+    "applicationCategory": "BrowserApplication",
+    "operatingSystem": "Chrome",
+    "description": "Chrome extension that adds credibility indicators to X/Twitter timelines, showing account location, platform, and authenticity scores.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Will Power Media LLC"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "ratingCount": "1"
+    }
+  }
+  </script>
+</head>
+<body>
+  <header class="hero">
+    <nav>
+      <div class="logo">
+        <img src="assets/logo.png" alt="XCred" width="32" height="32">
+        <span>XCred</span>
+      </div>
+      <a href="#install" class="nav-cta">Add to Chrome</a>
+    </nav>
+
+    <div class="hero-content">
+      <h1>See Who You're Really Talking To</h1>
+      <p class="hero-subtitle">Country flags and credibility scores appear <strong>right on your timeline</strong> — no clicking into profiles required. X buries this data behind multiple clicks. We surface it instantly.</p>
+      <a href="#" id="install" class="cta-button">Add to Chrome - It's Free</a>
+      <p class="cta-note">No sign-up required</p>
+    </div>
+
+    <div class="hero-image">
+      <img src="assets/screenshot-1.png" alt="XCred showing country flags and credibility indicators on X/Twitter timeline">
+    </div>
+  </header>
+
+  <section class="features">
+    <h2>Instant Transparency, Right on Your Timeline</h2>
+    <p class="section-subtitle">No more clicking Profile → Join Date → Scroll. XCred shows everything at a glance.</p>
+
+    <div class="feature-grid">
+      <div class="feature">
+        <div class="feature-icon">🇺🇸</div>
+        <h3>Country Flags</h3>
+        <p>Instantly see where each account is based with <strong>country flag icons</strong> displayed right below their avatar on every post.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">📱</div>
+        <h3>Platform Detection</h3>
+        <p>iOS App Store, Android, or Web? Know how they connected — mobile app users tend to be more authentic.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">🛡️</div>
+        <h3>VPN Detection</h3>
+        <p>X flags accounts hiding behind VPNs or proxies. We make this visible so you know who's masking their location.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">🏛️</div>
+        <h3>Government Accounts</h3>
+        <p>Instantly identify verified government accounts with party affiliation — Democrat, Republican, or other.</p>
+      </div>
+    </div>
+
+    <div class="feature-screenshot">
+      <img src="assets/screenshot-2.png" alt="XCred displaying multiple country flags on X/Twitter timeline">
+    </div>
+  </section>
+
+  <section class="tiers">
+    <h2>6-Tier Credibility System</h2>
+    <p class="section-subtitle">Quick visual indicators so you know who you're dealing with</p>
+
+    <div class="tier-list">
+      <div class="tier tier-gov">
+        <div class="tier-color"></div>
+        <div class="tier-info">
+          <strong>Government</strong>
+          <span>Government Verified</span>
+        </div>
+      </div>
+
+      <div class="tier tier-1">
+        <div class="tier-color"></div>
+        <div class="tier-info">
+          <strong>Highest</strong>
+          <span>Strong authenticity signals</span>
+        </div>
+      </div>
+
+      <div class="tier tier-2">
+        <div class="tier-color"></div>
+        <div class="tier-info">
+          <strong>High</strong>
+          <span>Good authenticity signals</span>
+        </div>
+      </div>
+
+      <div class="tier tier-3">
+        <div class="tier-color"></div>
+        <div class="tier-info">
+          <strong>Medium</strong>
+          <span>Some inconsistencies</span>
+        </div>
+      </div>
+
+      <div class="tier tier-4">
+        <div class="tier-color"></div>
+        <div class="tier-info">
+          <strong>Low</strong>
+          <span>Multiple concerns</span>
+        </div>
+      </div>
+
+      <div class="tier tier-5">
+        <div class="tier-color"></div>
+        <div class="tier-info">
+          <strong>Suspicious</strong>
+          <span>Significant red flags</span>
+        </div>
+      </div>
+
+      <div class="tier tier-6">
+        <div class="tier-color"></div>
+        <div class="tier-info">
+          <strong>Unknown</strong>
+          <span>Insufficient data</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="privacy-brief">
+    <h2>Privacy First</h2>
+    <div class="privacy-points">
+      <div class="privacy-point">
+        <span class="checkmark">✓</span>
+        <p>Uses only <strong>publicly available</strong> X transparency data</p>
+      </div>
+      <div class="privacy-point">
+        <span class="checkmark">✓</span>
+        <p><strong>No personal data</strong> collection</p>
+      </div>
+      <div class="privacy-point">
+        <span class="checkmark">✓</span>
+        <p>Processing happens <strong>locally</strong> in your browser</p>
+      </div>
+      <div class="privacy-point">
+        <span class="checkmark">✓</span>
+        <p>Optional shared cache to <strong>reduce API calls</strong></p>
+      </div>
+    </div>
+    <div class="privacy-footer">
+      <a href="privacy.html" class="privacy-link">Read full Privacy Policy</a>
+    </div>
+  </section>
+
+  <section class="final-cta">
+    <h2>Ready to see the truth?</h2>
+    <a href="#" class="cta-button">Add to Chrome - It's Free</a>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <img src="assets/logo.png" alt="XCred" width="24" height="24">
+        <span>XCred</span>
+      </div>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="#">Chrome Web Store</a>
+        <a href="https://buymeacoffee.com/kadenschutt" target="_blank">Buy Me a Coffee</a>
+      </div>
+      <p class="footer-tagline">Built for transparency, not harassment.</p>
+      <p class="footer-copyright">© 2025 Will Power Media LLC. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Update Chrome Web Store links once published
+    const CHROME_STORE_URL = '#'; // Replace with actual URL after publishing
+    document.querySelectorAll('a[href="#"]').forEach(link => {
+      if (link.textContent.includes('Chrome')) {
+        link.href = CHROME_STORE_URL;
+      }
+    });
+  </script>
+</body>
+</html>
