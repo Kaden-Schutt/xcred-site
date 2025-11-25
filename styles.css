@@ -665,6 +665,256 @@ footer {
   }
 }
 
+/* Install Page */
+.install-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.install-notice {
+  background: rgba(251, 146, 60, 0.1);
+  border: 1px solid rgba(251, 146, 60, 0.3);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+
+.install-notice h3 {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.install-notice p {
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
+}
+
+.install-notice p:last-child {
+  margin-bottom: 0;
+}
+
+.install-steps {
+  margin: 3rem 0;
+}
+
+.install-steps h2 {
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.step {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  padding: 1.5rem;
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.step:hover {
+  border-color: rgba(29, 155, 240, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.step-number {
+  width: 40px;
+  height: 40px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px var(--accent-glow);
+}
+
+.step-content h3 {
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+}
+
+.step-content p {
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.step-note {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  opacity: 0.8;
+  margin-top: 0.5rem;
+}
+
+.step-success {
+  color: var(--tier-2);
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+.download-button {
+  display: inline-block;
+  background: var(--accent);
+  color: white;
+  padding: 0.875rem 1.75rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  margin: 0.5rem 0;
+  box-shadow: 0 2px 8px var(--accent-glow);
+}
+
+.download-button:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--accent-glow);
+}
+
+.file-info {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+}
+
+code.copy-link {
+  background: var(--bg-tertiary);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  display: inline-block;
+  font-family: 'Courier New', monospace;
+  color: var(--accent);
+  margin: 0.5rem 0;
+  border: 1px solid var(--border-color);
+}
+
+.troubleshooting {
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 3rem 0;
+  border: 1px solid var(--border-color);
+}
+
+.troubleshooting h2 {
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.troubleshooting details {
+  margin: 1rem 0;
+  cursor: pointer;
+}
+
+.troubleshooting summary {
+  font-weight: 600;
+  padding: 0.75rem;
+  background: var(--bg-tertiary);
+  border-radius: 6px;
+  transition: background 0.2s ease;
+  border: 1px solid var(--border-color);
+}
+
+.troubleshooting summary:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(29, 155, 240, 0.3);
+}
+
+.troubleshooting details[open] summary {
+  margin-bottom: 0.75rem;
+  border-color: var(--accent);
+}
+
+.troubleshooting details p {
+  padding: 0.75rem 0.75rem 0.25rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.webstore-alternative {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  margin: 3rem 0;
+}
+
+.webstore-alternative h3 {
+  margin-bottom: 1rem;
+}
+
+.webstore-alternative p {
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-button-secondary {
+  display: inline-block;
+  background: transparent;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  margin-top: 1rem;
+}
+
+.cta-button-secondary:hover {
+  background: var(--accent);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--accent-glow);
+}
+
+.install-footer {
+  text-align: center;
+  padding: 2rem;
+  margin: 3rem 0 2rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.install-footer h3 {
+  margin-bottom: 0.75rem;
+  font-size: 1.125rem;
+}
+
+.install-footer p {
+  color: var(--text-secondary);
+}
+
+.install-footer a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.install-footer a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+.coming-soon {
+  opacity: 0.6;
+  cursor: not-allowed;
+  position: relative;
+  pointer-events: none;
+}
+
+.coming-soon::after {
+  content: ' 🔜';
+}
+
 /* Reduce motion for accessibility */
 @media (prefers-reduced-motion: reduce) {
   * {

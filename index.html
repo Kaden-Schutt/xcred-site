@@ -220,7 +220,9 @@
       </div>
       <div class="footer-links">
         <a href="privacy.html">Privacy Policy</a>
-        <a href="#">Chrome Web Store</a>
+        <a href="support.html">Support</a>
+        <a href="install.html">Download Extension</a>
+        <a href="#" class="coming-soon">Chrome Web Store</a>
         <a href="https://buymeacoffee.com/kadenschutt" target="_blank">Buy Me a Coffee</a>
       </div>
       <p class="footer-tagline">Built for transparency, not harassment.</p>
@@ -229,11 +231,17 @@
   </footer>
 
   <script>
-    // Update Chrome Web Store links once published
-    const CHROME_STORE_URL = '#'; // Replace with actual URL after publishing
+    // Direct download link for .crx
+    const CHROME_STORE_URL = '#'; // Will be updated once approved
+
     document.querySelectorAll('a[href="#"]').forEach(link => {
-      if (link.textContent.includes('Chrome')) {
-        link.href = CHROME_STORE_URL;
+      const text = link.textContent;
+      if (text.includes('Add to Chrome') || text.includes("It's Free")) {
+        // Redirect to install page
+        link.href = 'install.html';
+      } else if (text.includes('Chrome') && link.classList.contains('coming-soon')) {
+        // Keep as disabled placeholder
+        link.removeAttribute('href');
       }
     });
   </script>
