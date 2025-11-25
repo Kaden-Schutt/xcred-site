@@ -2,29 +2,60 @@
 <html>
 <head>
   <title>XCred Test Page</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:;">
   <style>
     body { font-family: monospace; padding: 20px; background: #000; color: #0f0; }
     .pass { color: #0f0; }
     .fail { color: #f00; }
-    img { border: 2px solid #0f0; max-width: 200px; }
+    .warn { color: #ff0; }
+    img { border: 2px solid #0f0; max-width: 200px; display: block; margin: 10px 0; }
+    .imgtest { margin: 20px 0; padding: 10px; border: 1px solid #333; }
   </style>
 </head>
 <body>
-  <h1>XCred Deployment Test</h1>
+  <h1>XCred Deployment Test v2</h1>
 
   <h2>File Structure Test</h2>
   <p class="pass">✓ test.html loaded successfully</p>
+  <p>Current URL: <span id="url"></span></p>
+  <p>Protocol: <span id="protocol"></span></p>
 
   <h2>Asset Loading Test</h2>
-  <p>Logo (assets/logo-128.png):</p>
-  <img src="assets/logo-128.png" onerror="this.style.borderColor='#f00'; this.alt='FAILED TO LOAD'">
 
-  <p>Screenshot 1 (assets/screenshot-1.png):</p>
-  <img src="assets/screenshot-1.png" onerror="this.style.borderColor='#f00'; this.alt='FAILED TO LOAD'">
+  <div class="imgtest">
+    <h3>Test 1: Logo (assets/logo-128.png)</h3>
+    <p>Direct link: <a href="assets/logo-128.png" target="_blank">Open in new tab</a></p>
+    <p>Full URL: <a href="https://kaden-schutt.github.io/xcred-site/assets/logo-128.png" target="_blank">https://kaden-schutt.github.io/xcred-site/assets/logo-128.png</a></p>
+    <p id="logo-status" class="warn">Loading...</p>
+    <img id="logo-img" src="assets/logo-128.png" alt="Logo">
+  </div>
 
-  <h2>CSS Loading Test</h2>
-  <link rel="stylesheet" href="styles.css">
-  <p id="csstest">If this has a different font, CSS loaded ✓</p>
+  <div class="imgtest">
+    <h3>Test 2: Screenshot (assets/screenshot-1.png)</h3>
+    <p>Direct link: <a href="assets/screenshot-1.png" target="_blank">Open in new tab</a></p>
+    <p>Full URL: <a href="https://kaden-schutt.github.io/xcred-site/assets/screenshot-1.png" target="_blank">https://kaden-schutt.github.io/xcred-site/assets/screenshot-1.png</a></p>
+    <p id="ss1-status" class="warn">Loading...</p>
+    <img id="ss1-img" src="assets/screenshot-1.png" alt="Screenshot 1">
+  </div>
+
+  <div class="imgtest">
+    <h3>Test 3: Logo with absolute path</h3>
+    <p id="abs-status" class="warn">Loading...</p>
+    <img id="abs-img" src="https://kaden-schutt.github.io/xcred-site/assets/logo-128.png" alt="Logo absolute">
+  </div>
+
+  <h2>Console Errors</h2>
+  <p class="warn">Check browser console (F12) for errors. Common issues:</p>
+  <ul>
+    <li>CORS errors</li>
+    <li>CSP violations</li>
+    <li>404 Not Found</li>
+    <li>Ad blocker blocking images</li>
+  </ul>
+
+  <h2>Browser Test</h2>
+  <p>User Agent: <span id="ua"></span></p>
+  <p>Cookies Enabled: <span id="cookies"></span></p>
 
   <h2>Navigation Test</h2>
   <ul>
@@ -34,27 +65,54 @@
     <li><a href="support.html">→ Support Page (support.html)</a></li>
   </ul>
 
-  <h2>Base Path Test</h2>
-  <p>Current URL: <span id="url"></span></p>
-  <p>Expected: https://kaden-schutt.github.io/xcred-site/test.html</p>
-
   <script>
     document.getElementById('url').textContent = window.location.href;
+    document.getElementById('protocol').textContent = window.location.protocol;
+    document.getElementById('ua').textContent = navigator.userAgent.substring(0, 100) + '...';
+    document.getElementById('cookies').textContent = navigator.cookieEnabled ? 'Yes' : 'No';
 
-    // Test image loading
-    var imgs = document.getElementsByTagName('img');
-    var loaded = 0;
-    for (var i = 0; i < imgs.length; i++) {
-      imgs[i].onload = function() {
-        loaded++;
-        if (loaded === imgs.length) {
-          document.body.insertAdjacentHTML('beforeend', '<p class="pass">✓ All images loaded successfully!</p>');
-        }
+    // Test images with detailed feedback
+    function setupImageTest(imgId, statusId, name) {
+      var img = document.getElementById(imgId);
+      var status = document.getElementById(statusId);
+
+      img.onload = function() {
+        status.textContent = '✓ ' + name + ' loaded successfully (' + img.naturalWidth + 'x' + img.naturalHeight + 'px)';
+        status.className = 'pass';
+        img.style.borderColor = '#0f0';
+      };
+
+      img.onerror = function() {
+        status.textContent = '✗ ' + name + ' FAILED TO LOAD - Check console for errors';
+        status.className = 'fail';
+        img.style.borderColor = '#f00';
+
+        // Try to fetch and log the error
+        fetch(img.src)
+          .then(response => {
+            if (!response.ok) {
+              status.textContent += ' (HTTP ' + response.status + ')';
+            }
+          })
+          .catch(error => {
+            status.textContent += ' (Network error: ' + error.message + ')';
+          });
       };
     }
+
+    setupImageTest('logo-img', 'logo-status', 'Logo');
+    setupImageTest('ss1-img', 'ss1-status', 'Screenshot 1');
+    setupImageTest('abs-img', 'abs-status', 'Logo (absolute path)');
+
+    // Log console errors
+    window.onerror = function(msg, url, line, col, error) {
+      document.body.insertAdjacentHTML('beforeend',
+        '<p class="fail">JavaScript Error: ' + msg + ' (line ' + line + ')</p>');
+    };
   </script>
 
   <hr>
   <p><a href="index.html">← Back to XCred</a></p>
+  <p style="font-size: 0.8em; color: #555;">If images still fail, try: Hard refresh (Ctrl+Shift+R), Clear cache, Disable ad blockers, Try different browser</p>
 </body>
 </html>
