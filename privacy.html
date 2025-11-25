@@ -29,7 +29,7 @@
     <a href="index.html" class="back-link">← Back to XCred</a>
 
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: November 23, 2025</p>
+    <p class="updated">Last updated: November 25, 2025</p>
 
     <h2>Overview</h2>
     <p>XCred is a browser extension that displays publicly available account transparency information on X/Twitter. This policy explains what data we access and how we handle it.</p>
@@ -47,8 +47,9 @@
     <p>This is the same information visible to anyone viewing an account's "About" page on X.</p>
 
     <h2>Data We Store</h2>
-    <p><strong>Local Cache (Your Browser):</strong> Profile data is cached locally using IndexedDB to reduce API calls and improve performance. This data stays on your device.</p>
-    <p><strong>Shared Cache (Optional):</strong> If "Remote Sync" is enabled in settings, anonymized profile data is shared with other XCred users via our database to reduce X API rate limits. You can disable this anytime.</p>
+    <p><strong>Local Cache (Your Browser):</strong> Profile data is cached locally using IndexedDB to reduce API calls and improve performance. This data stays on your device and expires after 24 hours.</p>
+    <p><strong>Shared Cache (Optional):</strong> If "Remote Sync" is enabled in settings, anonymized profile data is shared with other XCred users via our database to reduce X API rate limits. Cached profiles expire after 7 days and are automatically deleted. You can disable this anytime.</p>
+    <p><strong>Extension Client ID:</strong> A randomly generated identifier (e.g., "xcred_abc123") is created on first install and stored locally. This helps prevent spam and abuse of the shared cache. No personal information is tied to this ID.</p>
 
     <h2>Data We DO NOT Collect</h2>
     <ul>
@@ -80,7 +81,24 @@
     </ul>
 
     <h2>Data Security</h2>
-    <p>Local data is stored in your browser's IndexedDB, protected by your browser's security model. Shared cache data is stored in Supabase with row-level security policies.</p>
+    <p>Local data is stored in your browser's IndexedDB, protected by your browser's security model. Shared cache data is stored in Supabase with multiple security layers:</p>
+    <ul>
+      <li><strong>Database Constraints:</strong> Validates all data format (usernames, country codes, tier values) before accepting</li>
+      <li><strong>Anomaly Detection:</strong> Automatically flags and removes suspicious or impossible data combinations</li>
+      <li><strong>Row-Level Security (RLS):</strong> Policies control who can read/write cached profiles</li>
+      <li><strong>Automated Cleanup:</strong> Hourly jobs remove flagged profiles and expired data</li>
+      <li><strong>No Direct Database Access:</strong> All writes are validated server-side</li>
+    </ul>
+    <p>These measures protect the shared cache from spam and corruption while maintaining fast performance for legitimate users.</p>
+
+    <h2>Data Retention</h2>
+    <p>We automatically delete data according to these schedules:</p>
+    <ul>
+      <li><strong>Local Cache:</strong> Profiles expire after 24 hours; error entries after 30 minutes</li>
+      <li><strong>Shared Cache:</strong> Profiles older than 7 days are automatically deleted</li>
+      <li><strong>Anomaly Logs:</strong> Flagged profiles are removed within 24 hours of detection</li>
+    </ul>
+    <p>You can manually clear all local data at any time via the extension settings.</p>
 
     <h2>Children's Privacy</h2>
     <p>XCred is not intended for use by children under 13. We do not knowingly collect data from children.</p>
