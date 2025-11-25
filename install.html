@@ -10,7 +10,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="Install XCred - Chrome Extension">
-  <meta property="og:description" content="Add transparency indicators to X/Twitter in 5 easy steps.">
+  <meta property="og:description" content="Add transparency indicators to X/Twitter in 6 easy steps.">
   <meta property="og:url" content="https://kaden-schutt.github.io/xcred-site/install.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="XCred">
@@ -31,9 +31,9 @@
     <h1>Install XCred</h1>
 
     <div class="install-notice">
-      <h3>⚠️ Chrome Security Notice</h3>
-      <p>Chrome will show a warning because this extension isn't from the Chrome Web Store <strong>yet</strong>. We've submitted for review and will be approved soon (1-3 business days).</p>
-      <p>This .crx file is <strong>cryptographically signed</strong> with our private key and hasn't been modified. You can verify the signature matches our public key.</p>
+      <h3>⚠️ Developer Mode Required</h3>
+      <p>This extension isn't on the Chrome Web Store <strong>yet</strong> (submitted for review, 1-3 business days). You'll need to enable Developer Mode to install it manually.</p>
+      <p>The extension code is <strong>copyright protected</strong>. Don't worry—this is safe and only takes a minute.</p>
       <p><strong>Prefer to wait?</strong> Bookmark this page and come back when we're on the Chrome Web Store for one-click installation.</p>
     </div>
 
@@ -44,15 +44,24 @@
         <span class="step-number">1</span>
         <div class="step-content">
           <h3>Download the Extension</h3>
-          <a href="downloads/xcred-extension-v1.1.0.crx" download class="download-button">
-            Download XCred v1.1.0 (.crx)
+          <a href="downloads/xcred-extension-v1.1.0.zip" download class="download-button">
+            Download XCred v1.1.0 (.zip)
           </a>
-          <p class="file-info">File size: 52 KB • Signed with cryptographic key • Extension ID: lboldchlbeefkdpobjlpbfnmadpbjpoi</p>
+          <p class="file-info">File size: 90 KB • Copyright protected</p>
         </div>
       </div>
 
       <div class="step">
         <span class="step-number">2</span>
+        <div class="step-content">
+          <h3>Extract the ZIP File</h3>
+          <p>Right-click the downloaded <code>xcred-extension-v1.1.0.zip</code> file and select <strong>"Extract All..."</strong></p>
+          <p class="step-note">Remember the location where you extract it (e.g., Downloads folder). You'll need this folder in the next step.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <span class="step-number">3</span>
         <div class="step-content">
           <h3>Open Extensions Page</h3>
           <p>Open Chrome and navigate to:</p>
@@ -62,7 +71,7 @@
       </div>
 
       <div class="step">
-        <span class="step-number">3</span>
+        <span class="step-number">4</span>
         <div class="step-content">
           <h3>Enable Developer Mode</h3>
           <p>Toggle the <strong>"Developer mode"</strong> switch in the top right corner of the extensions page.</p>
@@ -71,20 +80,22 @@
       </div>
 
       <div class="step">
-        <span class="step-number">4</span>
+        <span class="step-number">5</span>
         <div class="step-content">
-          <h3>Drag and Drop</h3>
-          <p>Drag the downloaded <code>xcred-extension-v1.1.0.crx</code> file from your Downloads folder onto the extensions page.</p>
-          <p class="step-note">Alternatively, you can click "Load unpacked" and select the extension folder, but drag-and-drop is easier.</p>
+          <h3>Load Unpacked Extension</h3>
+          <p>Click the <strong>"Load unpacked"</strong> button that appears after enabling Developer mode.</p>
+          <p>Navigate to and select the <strong>extracted folder</strong> from Step 2 (the folder containing manifest.json).</p>
+          <p class="step-note">Make sure you select the folder itself, not the .zip file or a file inside the folder.</p>
         </div>
       </div>
 
       <div class="step">
-        <span class="step-number">5</span>
+        <span class="step-number">6</span>
         <div class="step-content">
-          <h3>Confirm Installation</h3>
-          <p>Click <strong>"Add extension"</strong> in the confirmation dialog that appears.</p>
+          <h3>Verify Installation</h3>
+          <p>XCred should now appear in your extensions list with a blue/green flag icon.</p>
           <p class="step-success">✅ Done! Refresh your X/Twitter tab to see country flags appear below avatars.</p>
+          <p class="step-note"><strong>Important:</strong> Don't delete the extracted folder after installation. Chrome needs it to run the extension.</p>
         </div>
       </div>
     </div>
@@ -94,12 +105,17 @@
 
       <details>
         <summary>"This extension is not listed in the Chrome Web Store"</summary>
-        <p>This is expected. We're awaiting Chrome Web Store approval (1-3 business days). The extension is safe and cryptographically signed. Chrome shows this warning for all extensions not installed through their store as a security precaution.</p>
+        <p>This is expected. We're awaiting Chrome Web Store approval (1-3 business days). The extension is safe. Chrome shows this warning for all extensions not installed through their store as a security precaution.</p>
       </details>
 
       <details>
-        <summary>"CRX_REQUIRED_PROOF_MISSING" error</summary>
-        <p>Make sure <strong>Developer mode</strong> is enabled in chrome://extensions/ <em>before</em> dragging the .crx file. Toggle it on in the top right corner, then try again.</p>
+        <summary>"Load unpacked" button is grayed out</summary>
+        <p>Make sure <strong>Developer mode</strong> is enabled in chrome://extensions/. Toggle it on in the top right corner, and the "Load unpacked" button will become active.</p>
+      </details>
+
+      <details>
+        <summary>Can't find the extracted folder</summary>
+        <p>Check your Downloads folder for <code>xcred-extension-v1.1.0</code>. If you can't find it, re-extract the .zip file and note the location. The folder should contain files like <code>manifest.json</code> and <code>content.js</code>.</p>
       </details>
 
       <details>
@@ -113,8 +129,13 @@
       </details>
 
       <details>
-        <summary>"Package is invalid: CRX_HEADER_INVALID"</summary>
-        <p>The download may have been corrupted. Try downloading the .crx file again. Make sure you're using a recent version of Chrome (v88+).</p>
+        <summary>"Manifest file is missing or unreadable" error</summary>
+        <p>Make sure you selected the <strong>folder</strong> containing the extension files, not the .zip file itself. The folder should have <code>manifest.json</code> directly inside it.</p>
+      </details>
+
+      <details>
+        <summary>I accidentally deleted the extracted folder</summary>
+        <p>The extension will stop working. Re-download the .zip file, extract it to a permanent location (like Documents/Chrome Extensions), and load it again using "Load unpacked".</p>
       </details>
     </div>
 
