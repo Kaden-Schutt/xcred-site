@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>XCred Test Page</title>
+  <style>
+    body { font-family: monospace; padding: 20px; background: #000; color: #0f0; }
+    .pass { color: #0f0; }
+    .fail { color: #f00; }
+    img { border: 2px solid #0f0; max-width: 200px; }
+  </style>
+</head>
+<body>
+  <h1>XCred Deployment Test</h1>
+
+  <h2>File Structure Test</h2>
+  <p class="pass">✓ test.html loaded successfully</p>
+
+  <h2>Asset Loading Test</h2>
+  <p>Logo (assets/logo-128.png):</p>
+  <img src="assets/logo-128.png" onerror="this.style.borderColor='#f00'; this.alt='FAILED TO LOAD'">
+
+  <p>Screenshot 1 (assets/screenshot-1.png):</p>
+  <img src="assets/screenshot-1.png" onerror="this.style.borderColor='#f00'; this.alt='FAILED TO LOAD'">
+
+  <h2>CSS Loading Test</h2>
+  <link rel="stylesheet" href="styles.css">
+  <p id="csstest">If this has a different font, CSS loaded ✓</p>
+
+  <h2>Navigation Test</h2>
+  <ul>
+    <li><a href="index.html">→ Homepage (index.html)</a></li>
+    <li><a href="install.html">→ Install Page (install.html)</a></li>
+    <li><a href="privacy.html">→ Privacy Policy (privacy.html)</a></li>
+    <li><a href="support.html">→ Support Page (support.html)</a></li>
+  </ul>
+
+  <h2>Base Path Test</h2>
+  <p>Current URL: <span id="url"></span></p>
+  <p>Expected: https://kaden-schutt.github.io/xcred-site/test.html</p>
+
+  <script>
+    document.getElementById('url').textContent = window.location.href;
+
+    // Test image loading
+    var imgs = document.getElementsByTagName('img');
+    var loaded = 0;
+    for (var i = 0; i < imgs.length; i++) {
+      imgs[i].onload = function() {
+        loaded++;
+        if (loaded === imgs.length) {
+          document.body.insertAdjacentHTML('beforeend', '<p class="pass">✓ All images loaded successfully!</p>');
+        }
+      };
+    }
+  </script>
+
+  <hr>
+  <p><a href="index.html">← Back to XCred</a></p>
+</body>
+</html>
