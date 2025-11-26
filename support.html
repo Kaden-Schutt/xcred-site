@@ -23,123 +23,443 @@
   <meta name="theme-color" content="#000000">
 
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Support page specific styles */
+    .support-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .support-hero {
+      text-align: center;
+      padding: 3rem 0;
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    .support-hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #1d9bf0 0%, #1a8cd8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+
+    .support-hero p {
+      color: var(--text-secondary);
+      font-size: 1.2rem;
+    }
+
+    /* Quick Start Cards */
+    .quick-start {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin: 2rem 0 3rem;
+    }
+
+    @media (max-width: 600px) {
+      .quick-start {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .quick-card {
+      background: var(--bg-secondary);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 1.5rem;
+      text-decoration: none;
+      color: var(--text-primary);
+      transition: all 0.2s ease;
+      display: block;
+    }
+
+    .quick-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .quick-card-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .quick-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .quick-card p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    /* Section Headers */
+    .section-header {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin: 3rem 0 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--accent);
+      display: inline-block;
+    }
+
+    /* Tier Legend */
+    .tier-legend {
+      background: var(--bg-secondary);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .tier-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .tier-item:last-child {
+      border-bottom: none;
+    }
+
+    .tier-swatch {
+      width: 24px;
+      height: 16px;
+      border-radius: 4px;
+      border: 3px solid;
+      flex-shrink: 0;
+    }
+
+    .tier-swatch.government { border-color: #C0C0C0; }
+    .tier-swatch.tier1 { border-color: #1DA1F2; }
+    .tier-swatch.tier2 { border-color: #17BF63; }
+    .tier-swatch.tier3 { border-color: #FACC15; }
+    .tier-swatch.tier4 { border-color: #FB923C; }
+    .tier-swatch.tier5 { border-color: #EF4444; }
+    .tier-swatch.tier6 { border-color: #9CA3AF; }
+
+    .tier-label {
+      font-weight: 600;
+      min-width: 120px;
+    }
+
+    .tier-desc {
+      color: var(--text-secondary);
+    }
+
+    /* FAQ Sections */
+    .faq-section {
+      margin: 1.5rem 0;
+    }
+
+    .faq-section details {
+      background: var(--bg-secondary);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      margin-bottom: 0.75rem;
+      overflow: hidden;
+    }
+
+    .faq-section summary {
+      padding: 1rem 1.25rem;
+      cursor: pointer;
+      font-weight: 600;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.2s;
+    }
+
+    .faq-section summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-section summary::after {
+      content: '+';
+      font-size: 1.5rem;
+      color: var(--accent);
+      transition: transform 0.2s;
+    }
+
+    .faq-section details[open] summary::after {
+      transform: rotate(45deg);
+    }
+
+    .faq-section summary:hover {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .faq-section .faq-content {
+      padding: 0 1.25rem 1.25rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .faq-section .faq-content ul,
+    .faq-section .faq-content ol {
+      margin: 0.5rem 0;
+      padding-left: 1.5rem;
+    }
+
+    .faq-section .faq-content li {
+      margin: 0.5rem 0;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      background: var(--bg-secondary);
+      border-radius: 16px;
+      padding: 2rem;
+      margin: 2rem 0;
+      text-align: center;
+    }
+
+    .contact-section h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .contact-section a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .contact-section a:hover {
+      text-decoration: underline;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
 <body>
-  <div class="privacy-content">
+  <div class="support-container">
     <a href="index.html" class="back-link">&larr; Back to XCred</a>
 
-    <h1>Support Center</h1>
-    <p class="updated">Need help? Find answers below or contact us.</p>
+    <div class="support-hero">
+      <h1>Support Center</h1>
+      <p>Everything you need to get started with XCred</p>
+    </div>
 
-    <h2>Getting Started</h2>
-    <h3>Installation</h3>
-    <ol>
-      <li>Visit the <a href="https://chrome.google.com/webstore" target="_blank">Chrome Web Store</a> and search for "XCred"</li>
-      <li>Click "Add to Chrome"</li>
-      <li>Confirm the installation when prompted</li>
-      <li>Navigate to X/Twitter - XCred will automatically activate</li>
-    </ol>
+    <!-- Quick Start Cards -->
+    <div class="quick-start">
+      <a href="install.html" class="quick-card">
+        <div class="quick-card-icon">📥</div>
+        <h3>Installation Guide</h3>
+        <p>Step-by-step instructions to install XCred</p>
+      </a>
+      <div class="quick-card">
+        <div class="quick-card-icon">🏪</div>
+        <h3>Chrome Web Store</h3>
+        <p>Pending approval — use GitHub download for now</p>
+      </div>
+      <a href="#how-it-works" class="quick-card">
+        <div class="quick-card-icon">📖</div>
+        <h3>How It Works</h3>
+        <p>Learn how XCred analyzes account credibility</p>
+      </a>
+      <a href="privacy.html" class="quick-card">
+        <div class="quick-card-icon">🔒</div>
+        <h3>Privacy Policy</h3>
+        <p>Your data, your control — see what we access</p>
+      </a>
+    </div>
 
-    <h3>How It Works</h3>
-    <p>XCred analyzes publicly available account information on X/Twitter and displays a country flag with a color-coded border below each user's avatar. The flag shows the account's registered location, while the border color indicates the account's credibility tier based on multiple factors.</p>
-
-    <h2>Frequently Asked Questions</h2>
-
-    <h3>What do the border colors mean?</h3>
-    <ul>
-      <li><strong style="color: #1d9bf0;">Blue Border</strong> - Government: Officially verified government accounts</li>
-      <li><strong style="color: #22c55e;">Green Border</strong> - Trusted: High credibility score with verified information</li>
-      <li><strong style="color: #3b82f6;">Blue Border</strong> - High: Good credibility score</li>
-      <li><strong style="color: #a855f7;">Purple Border</strong> - Moderate: Average credibility score</li>
-      <li><strong style="color: #eab308;">Yellow Border</strong> - Low: Below average credibility</li>
-      <li><strong style="color: #ef4444;">Red Border</strong> - Suspicious: Multiple concerning indicators</li>
-    </ul>
-
-    <h3>What factors affect the credibility score?</h3>
-    <ul>
-      <li>Account verification status (Government, Business, or Blue checkmark)</li>
-      <li>Connection platform (iOS, Android, or Web)</li>
-      <li>Location consistency between account and app store</li>
-      <li>Account age</li>
-      <li>VPN or proxy usage</li>
-      <li>Number of username changes</li>
-    </ul>
-
-    <h3>Why don't I see a flag for some accounts?</h3>
-    <p>Some accounts may not have location data available in X's public transparency information. XCred can only display data that X makes publicly available.</p>
-
-    <h3>Is this extension tracking me?</h3>
-    <p>No. XCred does not track your activity, collect your personal information, or access your login credentials. See our <a href="privacy.html">Privacy Policy</a> for details.</p>
-
-    <h3>Why is my timeline loading slower?</h3>
-    <p>XCred makes API calls to fetch account information. To minimize impact:</p>
-    <ul>
-      <li>Enable "Remote Sync" in settings to use shared cache</li>
-      <li>Data is cached locally to speed up subsequent loads</li>
-      <li>Rate limiting prevents excessive API calls</li>
-    </ul>
-
-    <h2>Troubleshooting</h2>
-
-    <h3>Flags not appearing</h3>
-    <ol>
-      <li>Refresh the X/Twitter page</li>
-      <li>Make sure you're logged into X/Twitter</li>
-      <li>Check that the extension is enabled in Chrome's extension settings</li>
-      <li>Try disabling and re-enabling the extension</li>
-    </ol>
-
-    <h3>Extension not working after update</h3>
-    <ol>
-      <li>Go to <code>chrome://extensions/</code></li>
-      <li>Find XCred and click the refresh icon</li>
-      <li>Reload any open X/Twitter tabs</li>
-    </ol>
-
-    <h3>Clear cached data</h3>
-    <ol>
-      <li>Click the XCred icon in your browser toolbar</li>
-      <li>Scroll down to find the cache management option</li>
-      <li>Click to clear local cached data</li>
-    </ol>
-
-    <h3>Images not loading on the website</h3>
-    <p>If you see broken image icons or missing screenshots:</p>
-    <ol>
-      <li>Clear your browser cache (Ctrl+Shift+Delete)</li>
-      <li>Hard refresh the page (Ctrl+Shift+R or Cmd+Shift+R)</li>
-      <li>Make sure you're visiting <strong>https://kaden-schutt.github.io/xcred-site/</strong></li>
-      <li>If using xcred.org, note that domain setup is still in progress - use the GitHub Pages URL above</li>
-    </ol>
-
-    <h3>xcred.org shows "There isn't a GitHub Pages site here"</h3>
-    <p>The xcred.org custom domain is still being configured. In the meantime:</p>
-    <ul>
-      <li><strong>Use the GitHub Pages URL:</strong> <a href="https://kaden-schutt.github.io/xcred-site/" target="_blank">https://kaden-schutt.github.io/xcred-site/</a></li>
-      <li>Bookmark the GitHub Pages link for now</li>
-      <li>Once DNS propagation completes, xcred.org will redirect automatically</li>
-    </ul>
-
-    <h2>Feature Requests &amp; Bug Reports</h2>
-    <p>Have an idea for XCred or found a bug? We'd love to hear from you:</p>
-    <ul>
-      <li><strong>GitHub Issues:</strong> Report bugs or request features on our GitHub repository</li>
-      <li><strong>Email:</strong> Contact us at <a href="mailto:support@xcred.org">support@xcred.org</a></li>
-    </ul>
-
-    <h2>Contact Us</h2>
-    <p>For support inquiries:</p>
-    <p>
-      Will Power Media LLC<br>
-      <a href="mailto:support@xcred.org">support@xcred.org</a>
+    <!-- How It Works -->
+    <h2 class="section-header" id="how-it-works">How It Works</h2>
+    <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 2rem;">
+      XCred analyzes publicly available account information from X/Twitter's transparency data and displays a country flag with a color-coded border below each user's avatar. The flag shows the account's registered location, while the border color indicates a credibility tier based on multiple factors.
     </p>
 
-    <p class="updated" style="margin-top: 2rem;">Response time: Usually within 24-48 hours</p>
+    <!-- Credibility Tiers -->
+    <h2 class="section-header">Understanding Credibility Tiers</h2>
+    <div class="tier-legend">
+      <div class="tier-item">
+        <div class="tier-swatch government"></div>
+        <span class="tier-label">Government</span>
+        <span class="tier-desc">Officially verified government accounts</span>
+      </div>
+      <div class="tier-item">
+        <div class="tier-swatch tier1"></div>
+        <span class="tier-label">Tier 1 (Blue)</span>
+        <span class="tier-desc">Strong authenticity signals</span>
+      </div>
+      <div class="tier-item">
+        <div class="tier-swatch tier2"></div>
+        <span class="tier-label">Tier 2 (Green)</span>
+        <span class="tier-desc">Good authenticity signals</span>
+      </div>
+      <div class="tier-item">
+        <div class="tier-swatch tier3"></div>
+        <span class="tier-label">Tier 3 (Yellow)</span>
+        <span class="tier-desc">Some inconsistencies detected</span>
+      </div>
+      <div class="tier-item">
+        <div class="tier-swatch tier4"></div>
+        <span class="tier-label">Tier 4 (Orange)</span>
+        <span class="tier-desc">Multiple concerns identified</span>
+      </div>
+      <div class="tier-item">
+        <div class="tier-swatch tier5"></div>
+        <span class="tier-label">Tier 5 (Red)</span>
+        <span class="tier-desc">Significant red flags present</span>
+      </div>
+      <div class="tier-item">
+        <div class="tier-swatch tier6"></div>
+        <span class="tier-label">Tier 6 (Gray)</span>
+        <span class="tier-desc">Insufficient data available</span>
+      </div>
+    </div>
+
+    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-top: 1rem;">
+      <strong>Scoring factors include:</strong> verification status, connection platform (iOS/Android/Web), location consistency, account age, VPN/proxy usage, and username change history.
+    </p>
+
+    <!-- FAQ Section -->
+    <h2 class="section-header">Frequently Asked Questions</h2>
+    <div class="faq-section">
+      <details>
+        <summary>What do the colored borders mean?</summary>
+        <div class="faq-content">
+          <p>The border color around each flag indicates the account's credibility tier. Silver borders indicate government accounts, blue indicates the highest credibility, and the scale goes through green, yellow, orange, red, and gray (insufficient data) as credibility decreases.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>What factors determine the credibility score?</summary>
+        <div class="faq-content">
+          <ul>
+            <li><strong>Verification status</strong> — Government, Business, or Blue checkmark</li>
+            <li><strong>Connection platform</strong> — iOS, Android, or Web client</li>
+            <li><strong>Location consistency</strong> — Match between account and app store location</li>
+            <li><strong>Account age</strong> — Older accounts score higher</li>
+            <li><strong>VPN/Proxy usage</strong> — X flags accounts using VPNs</li>
+            <li><strong>Username changes</strong> — Frequent changes reduce score</li>
+          </ul>
+        </div>
+      </details>
+
+      <details>
+        <summary>Why doesn't an account show a flag?</summary>
+        <div class="faq-content">
+          <p>Some accounts may not have location data available in X's public transparency information. XCred can only display data that X makes publicly available through their API.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Does XCred track me?</summary>
+        <div class="faq-content">
+          <p>No. XCred does not track your activity, collect your personal information, or access your login credentials. All processing happens locally in your browser. See our <a href="privacy.html">Privacy Policy</a> for complete details.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Will this slow down X/Twitter?</summary>
+        <div class="faq-content">
+          <p>XCred is optimized for performance:</p>
+          <ul>
+            <li><strong>Remote Sync</strong> — Shares cached data with other users to reduce API calls</li>
+            <li><strong>Local caching</strong> — Data is stored locally for faster subsequent loads</li>
+            <li><strong>Rate limiting</strong> — Built-in throttling prevents excessive API calls</li>
+          </ul>
+          <p>For best performance, keep "Remote Sync" enabled in the extension settings.</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- Troubleshooting Section -->
+    <h2 class="section-header">Troubleshooting</h2>
+    <div class="faq-section">
+      <details>
+        <summary>Flags not appearing after installation</summary>
+        <div class="faq-content">
+          <ol>
+            <li>Refresh the X/Twitter page (Ctrl+R or Cmd+R)</li>
+            <li>Make sure you're logged into X/Twitter</li>
+            <li>Check that the extension is enabled in <code>chrome://extensions/</code></li>
+            <li>Click the XCred icon to verify settings</li>
+            <li>Try disabling and re-enabling the extension</li>
+          </ol>
+        </div>
+      </details>
+
+      <details>
+        <summary>Extension not updating data</summary>
+        <div class="faq-content">
+          <ol>
+            <li>Go to <code>chrome://extensions/</code></li>
+            <li>Find XCred and click the refresh icon</li>
+            <li>Reload any open X/Twitter tabs</li>
+          </ol>
+        </div>
+      </details>
+
+      <details>
+        <summary>Getting rate limited by X's API</summary>
+        <div class="faq-content">
+          <p>If you're seeing rate limit errors:</p>
+          <ol>
+            <li>Open the XCred popup (click the extension icon)</li>
+            <li>Make sure <strong>"Remote Cache Sync"</strong> is enabled</li>
+            <li>This shares cached data with other users, significantly reducing individual API calls</li>
+            <li>Wait a few minutes for rate limits to reset</li>
+          </ol>
+        </div>
+      </details>
+    </div>
+
+    <!-- Feature Requests -->
+    <h2 class="section-header">Feature Requests & Bug Reports</h2>
+    <p style="color: var(--text-secondary); line-height: 1.7;">
+      Have an idea for XCred or found a bug? We'd love to hear from you:
+    </p>
+    <ul style="color: var(--text-secondary); line-height: 1.8; margin: 1rem 0 2rem;">
+      <li><strong>GitHub Issues:</strong> <a href="https://github.com/Kaden-Schutt/xcred/issues" target="_blank" style="color: var(--accent);">Report bugs or request features</a></li>
+      <li><strong>Email:</strong> <a href="mailto:support@xcred.org" style="color: var(--accent);">support@xcred.org</a></li>
+    </ul>
+
+    <!-- Contact Section -->
+    <div class="contact-section">
+      <h3>Contact Us</h3>
+      <p>Will Power Media LLC</p>
+      <p><a href="mailto:support@xcred.org">support@xcred.org</a></p>
+      <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 1rem;">Response time: Usually within 24-48 hours</p>
+    </div>
   </div>
 
   <footer>
     <div class="footer-content">
-      <p class="footer-copyright">&copy; 2025 Will Power Media LLC. All rights reserved.</p>
+      <div class="footer-brand">
+        <img src="assets/logo.png" alt="XCred" width="24" height="24">
+        <span>XCred</span>
+      </div>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="support.html">Support</a>
+        <a href="install.html">Download Extension</a>
+        <a href="#" class="coming-soon">Chrome Web Store (Coming Soon)</a>
+        <a href="https://github.com/Kaden-Schutt/xcred" target="_blank">GitHub</a>
+        <a href="https://buymeacoffee.com/kadenschutt" target="_blank">Buy Me a Coffee</a>
+      </div>
+      <p class="footer-tagline">Built for transparency, not harassment.</p>
+      <p class="footer-copyright">© 2025 Will Power Media LLC. All rights reserved.</p>
     </div>
   </footer>
 </body>
