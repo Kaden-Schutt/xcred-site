@@ -23,99 +23,437 @@
   <meta name="theme-color" content="#000000">
 
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Privacy page specific styles */
+    .privacy-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .privacy-hero {
+      text-align: center;
+      padding: 3rem 0;
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    .privacy-hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #1d9bf0 0%, #1a8cd8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+
+    .privacy-hero p {
+      color: var(--text-secondary);
+      font-size: 1.2rem;
+    }
+
+    .updated {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    /* Section Headers */
+    .section-header {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin: 3rem 0 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--accent);
+      display: inline-block;
+    }
+
+    /* Content Cards */
+    .content-card {
+      background: var(--bg-secondary);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .content-card p {
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .content-card p + p {
+      margin-top: 1rem;
+    }
+
+    .content-card ul {
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin: 0.5rem 0;
+      padding-left: 1.5rem;
+    }
+
+    .content-card li {
+      margin: 0.5rem 0;
+    }
+
+    /* Data Grid */
+    .data-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    @media (max-width: 600px) {
+      .data-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .data-card {
+      background: var(--bg-secondary);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 1.5rem;
+    }
+
+    .data-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .data-card .icon {
+      font-size: 1.3rem;
+    }
+
+    .data-card ul {
+      color: var(--text-secondary);
+      margin: 0;
+      padding-left: 1.25rem;
+    }
+
+    .data-card li {
+      margin: 0.5rem 0;
+    }
+
+    /* FAQ Sections for expandable content */
+    .faq-section {
+      margin: 1.5rem 0;
+    }
+
+    .faq-section details {
+      background: var(--bg-secondary);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      margin-bottom: 0.75rem;
+      overflow: hidden;
+    }
+
+    .faq-section summary {
+      padding: 1rem 1.25rem;
+      cursor: pointer;
+      font-weight: 600;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.2s;
+    }
+
+    .faq-section summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-section summary::after {
+      content: '+';
+      font-size: 1.5rem;
+      color: var(--accent);
+      transition: transform 0.2s;
+    }
+
+    .faq-section details[open] summary::after {
+      transform: rotate(45deg);
+    }
+
+    .faq-section summary:hover {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .faq-section .faq-content {
+      padding: 0 1.25rem 1.25rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .faq-section .faq-content ul {
+      margin: 0.5rem 0;
+      padding-left: 1.5rem;
+    }
+
+    .faq-section .faq-content li {
+      margin: 0.5rem 0;
+    }
+
+    /* Your Controls Grid */
+    .controls-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    @media (max-width: 700px) {
+      .controls-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .control-card {
+      background: var(--bg-secondary);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .control-card .icon {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .control-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .control-card p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      background: var(--bg-secondary);
+      border-radius: 16px;
+      padding: 2rem;
+      margin: 2rem 0;
+      text-align: center;
+    }
+
+    .contact-section h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .contact-section a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .contact-section a:hover {
+      text-decoration: underline;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
 <body>
-  <div class="privacy-content">
-    <a href="index.html" class="back-link">← Back to XCred</a>
+  <div class="privacy-container">
+    <a href="index.html" class="back-link">&larr; Back to XCred</a>
 
-    <h1>Privacy Policy</h1>
+    <div class="privacy-hero">
+      <h1>Privacy Policy</h1>
+      <p>Your data, your control</p>
+    </div>
+
     <p class="updated">Last updated: November 25, 2025</p>
 
-    <h2>Overview</h2>
-    <p>XCred is a browser extension that displays publicly available account transparency information on X/Twitter. This policy explains what data we access and how we handle it.</p>
+    <!-- Overview -->
+    <h2 class="section-header">Overview</h2>
+    <div class="content-card">
+      <p>XCred is a browser extension that displays publicly available account transparency information on X/Twitter. This policy explains what data we access and how we handle it.</p>
+    </div>
 
-    <h2>Data We Access</h2>
-    <p>XCred accesses the following publicly available information from X/Twitter:</p>
-    <ul>
-      <li>Account location ("Account based in")</li>
-      <li>Connection platform ("Connected via" - iOS App Store, Android, Web)</li>
-      <li>VPN/Proxy detection status</li>
-      <li>Verification status (Blue, Business, Government)</li>
-      <li>Account creation date</li>
-      <li>Username change history</li>
-    </ul>
-    <p>This is the same information visible to anyone viewing an account's "About" page on X.</p>
+    <!-- Data We Access / Don't Collect - Side by Side -->
+    <h2 class="section-header">Data Access</h2>
+    <div class="data-grid">
+      <div class="data-card">
+        <h3><span class="icon">✓</span> What We Access</h3>
+        <ul>
+          <li>Account location ("Account based in")</li>
+          <li>Connection platform (iOS, Android, Web)</li>
+          <li>VPN/Proxy detection status</li>
+          <li>Verification status</li>
+          <li>Account creation date</li>
+          <li>Username change history</li>
+        </ul>
+        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 1rem; padding-left: 0;">This is the same info visible on any account's "About" page on X.</p>
+      </div>
+      <div class="data-card">
+        <h3><span class="icon">✗</span> What We Never Collect</h3>
+        <ul>
+          <li>Your X/Twitter login credentials</li>
+          <li>Your personal information</li>
+          <li>Your browsing history</li>
+          <li>Private messages or protected tweets</li>
+          <li>Your IP address or device info</li>
+          <li>Data from accounts you don't view</li>
+        </ul>
+      </div>
+    </div>
 
-    <h2>Data We Store</h2>
-    <p><strong>Local Cache (Your Browser):</strong> Profile data is cached locally using IndexedDB to reduce API calls and improve performance. This data stays on your device and expires after 24 hours.</p>
-    <p><strong>Shared Cache (Optional):</strong> If "Remote Sync" is enabled in settings, anonymized profile data is shared with other XCred users via our database to reduce X API rate limits. Cached profiles expire after 7 days and are automatically deleted. You can disable this anytime.</p>
-    <p><strong>Extension Client ID:</strong> A randomly generated identifier (e.g., "xcred_abc123") is created on first install and stored locally. This helps prevent spam and abuse of the shared cache. No personal information is tied to this ID.</p>
+    <!-- Data Storage -->
+    <h2 class="section-header">Data Storage</h2>
+    <div class="faq-section">
+      <details>
+        <summary>Local Cache (Your Browser)</summary>
+        <div class="faq-content">
+          <p>Profile data is cached locally using IndexedDB to reduce API calls and improve performance. This data stays on your device and expires after 24 hours.</p>
+        </div>
+      </details>
 
-    <h2>Data We DO NOT Collect</h2>
-    <ul>
-      <li>Your X/Twitter login credentials</li>
-      <li>Your personal information</li>
-      <li>Your browsing history</li>
-      <li>Private messages or protected tweets</li>
-      <li>Your IP address or device information</li>
-      <li>Any data from accounts you don't view</li>
-    </ul>
+      <details>
+        <summary>Shared Cache (Optional)</summary>
+        <div class="faq-content">
+          <p>If "Remote Sync" is enabled in settings, anonymized profile data is shared with other XCred users via our database to reduce X API rate limits. Cached profiles expire after 7 days and are automatically deleted. You can disable this anytime.</p>
+        </div>
+      </details>
 
-    <h2>Third-Party Services</h2>
-    <p><strong>Supabase:</strong> Used for the optional shared profile cache. Stores only public profile transparency data (location, platform, verification status). No personal user data is stored.</p>
-    <p>We do not use any analytics, tracking, or advertising services.</p>
+      <details>
+        <summary>Extension Client ID</summary>
+        <div class="faq-content">
+          <p>A randomly generated identifier (e.g., "xcred_abc123") is created on first install and stored locally. This helps prevent spam and abuse of the shared cache. No personal information is tied to this ID.</p>
+        </div>
+      </details>
+    </div>
 
-    <h2>Data Sharing</h2>
-    <ul>
-      <li>We do not sell any data</li>
-      <li>We do not share data with advertisers</li>
-      <li>Cached profile data may be shared with other XCred users (if Remote Sync is enabled) to improve performance</li>
-      <li>All shared data is already publicly accessible on X</li>
-    </ul>
+    <!-- Data Security -->
+    <h2 class="section-header">Data Security</h2>
+    <div class="content-card">
+      <p>Local data is stored in your browser's IndexedDB, protected by your browser's security model. Shared cache data is stored in Supabase with multiple security layers:</p>
+      <ul>
+        <li><strong>Database Constraints:</strong> Validates all data format before accepting</li>
+        <li><strong>Anomaly Detection:</strong> Automatically flags and removes suspicious data</li>
+        <li><strong>Row-Level Security:</strong> Policies control who can read/write cached profiles</li>
+        <li><strong>Automated Cleanup:</strong> Hourly jobs remove flagged and expired data</li>
+      </ul>
+    </div>
 
-    <h2>Your Controls</h2>
-    <ul>
-      <li><strong>Disable Remote Sync:</strong> Turn off shared caching in extension settings</li>
-      <li><strong>Clear Local Cache:</strong> Delete all cached data via extension settings</li>
-      <li><strong>Uninstall:</strong> Removes all local data and stops all data access</li>
-    </ul>
+    <!-- Data Retention -->
+    <h2 class="section-header">Data Retention</h2>
+    <div class="content-card">
+      <p>We automatically delete data according to these schedules:</p>
+      <ul>
+        <li><strong>Local Cache:</strong> Profiles expire after 24 hours; error entries after 30 minutes</li>
+        <li><strong>Shared Cache:</strong> Profiles older than 7 days are automatically deleted</li>
+        <li><strong>Anomaly Logs:</strong> Flagged profiles are removed within 24 hours of detection</li>
+      </ul>
+      <p>You can manually clear all local data at any time via the extension settings.</p>
+    </div>
 
-    <h2>Data Security</h2>
-    <p>Local data is stored in your browser's IndexedDB, protected by your browser's security model. Shared cache data is stored in Supabase with multiple security layers:</p>
-    <ul>
-      <li><strong>Database Constraints:</strong> Validates all data format (usernames, country codes, tier values) before accepting</li>
-      <li><strong>Anomaly Detection:</strong> Automatically flags and removes suspicious or impossible data combinations</li>
-      <li><strong>Row-Level Security (RLS):</strong> Policies control who can read/write cached profiles</li>
-      <li><strong>Automated Cleanup:</strong> Hourly jobs remove flagged profiles and expired data</li>
-      <li><strong>No Direct Database Access:</strong> All writes are validated server-side</li>
-    </ul>
-    <p>These measures protect the shared cache from spam and corruption while maintaining fast performance for legitimate users.</p>
+    <!-- Your Controls -->
+    <h2 class="section-header">Your Controls</h2>
+    <div class="controls-grid">
+      <div class="control-card">
+        <div class="icon">🔄</div>
+        <h3>Disable Remote Sync</h3>
+        <p>Turn off shared caching in extension settings</p>
+      </div>
+      <div class="control-card">
+        <div class="icon">🗑️</div>
+        <h3>Clear Local Cache</h3>
+        <p>Delete all cached data via extension settings</p>
+      </div>
+      <div class="control-card">
+        <div class="icon">❌</div>
+        <h3>Uninstall</h3>
+        <p>Removes all local data and stops all access</p>
+      </div>
+    </div>
 
-    <h2>Data Retention</h2>
-    <p>We automatically delete data according to these schedules:</p>
-    <ul>
-      <li><strong>Local Cache:</strong> Profiles expire after 24 hours; error entries after 30 minutes</li>
-      <li><strong>Shared Cache:</strong> Profiles older than 7 days are automatically deleted</li>
-      <li><strong>Anomaly Logs:</strong> Flagged profiles are removed within 24 hours of detection</li>
-    </ul>
-    <p>You can manually clear all local data at any time via the extension settings.</p>
+    <!-- Third Party & Data Sharing -->
+    <h2 class="section-header">Third-Party Services</h2>
+    <div class="faq-section">
+      <details>
+        <summary>Supabase (Remote Cache)</summary>
+        <div class="faq-content">
+          <p>Used for the optional shared profile cache. Stores only public profile transparency data (location, platform, verification status). No personal user data is stored.</p>
+        </div>
+      </details>
 
-    <h2>Children's Privacy</h2>
-    <p>XCred is not intended for use by children under 13. We do not knowingly collect data from children.</p>
+      <details>
+        <summary>Data Sharing Practices</summary>
+        <div class="faq-content">
+          <ul>
+            <li>We do not sell any data</li>
+            <li>We do not share data with advertisers</li>
+            <li>Cached profile data may be shared with other XCred users (if Remote Sync is enabled) to improve performance</li>
+            <li>All shared data is already publicly accessible on X</li>
+          </ul>
+          <p style="margin-top: 1rem;">We do not use any analytics, tracking, or advertising services.</p>
+        </div>
+      </details>
+    </div>
 
-    <h2>Changes to This Policy</h2>
-    <p>We may update this policy as the extension evolves. Changes will be posted on this page with an updated date.</p>
+    <!-- Additional Info -->
+    <h2 class="section-header">Additional Information</h2>
+    <div class="faq-section">
+      <details>
+        <summary>Children's Privacy</summary>
+        <div class="faq-content">
+          <p>XCred is not intended for use by children under 13. We do not knowingly collect data from children.</p>
+        </div>
+      </details>
 
-    <h2>Contact</h2>
-    <p>For privacy questions or concerns:</p>
-    <p>
-      Will Power Media LLC<br>
-      <a href="mailto:support@xcred.org">support@xcred.org</a>
-    </p>
+      <details>
+        <summary>Changes to This Policy</summary>
+        <div class="faq-content">
+          <p>We may update this policy as the extension evolves. Changes will be posted on this page with an updated date.</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- Contact -->
+    <div class="contact-section">
+      <h3>Questions?</h3>
+      <p>Will Power Media LLC</p>
+      <p><a href="mailto:support@xcred.org">support@xcred.org</a></p>
+    </div>
   </div>
 
   <footer>
     <div class="footer-content">
+      <a href="index.html" class="footer-brand">
+        <img src="assets/logo.png" alt="XCred" width="32" height="32">
+        <span>XCred</span>
+      </a>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="support.html">Support</a>
+        <a href="install.html">Download Extension</a>
+        <a href="#" class="coming-soon">Chrome Web Store (Coming Soon)</a>
+        <a href="https://github.com/Kaden-Schutt/xcred" target="_blank">GitHub</a>
+        <a href="https://buymeacoffee.com/kadenschutt" target="_blank">Buy Me a Coffee</a>
+      </div>
+      <p class="footer-tagline">Built for transparency, not harassment.</p>
       <p class="footer-copyright">© 2025 Will Power Media LLC. All rights reserved.</p>
     </div>
   </footer>

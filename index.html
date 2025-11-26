@@ -65,10 +65,10 @@
 <body>
   <header class="hero">
     <nav>
-      <div class="logo">
-        <img src="assets/logo.png" alt="XCred" width="32" height="32">
+      <a href="index.html" class="logo">
+        <img src="assets/logo.png" alt="XCred" width="52" height="52">
         <span>XCred</span>
-      </div>
+      </a>
       <a href="install.html" class="nav-cta">Add to Chrome</a>
     </nav>
 
@@ -85,7 +85,7 @@
       <div class="demo-single-tweet" id="hero-tweet-container" role="region" aria-label="Interactive XCred demo">
         <!-- Tweet will be cloned from timeline via JavaScript -->
       </div>
-      <p class="demo-disclaimer">⚠️ <strong>All tweets shown are 100% fictional</strong> — created solely to demonstrate XCred's features. No real accounts or people are depicted.</p>
+      <p class="demo-disclaimer"><strong>⚠️ All tweets shown are 100% fictional</strong><br><span class="disclaimer-sub">Created solely to demonstrate XCred's features. No real accounts or people are depicted.</span></p>
       <!-- Fallback for no-JS -->
       <noscript>
         <img src="assets/screenshot-1.png" alt="XCred showing country flags and credibility indicators on X/Twitter timeline">
@@ -183,7 +183,7 @@
         <div class="demo-tweet">
           <div class="demo-tweet-avatar-container">
             <img src="assets/demo/avatar-gov-dem.svg" alt="" class="demo-tweet-avatar" aria-hidden="true">
-            <div class="demo-xcred-indicator tier-gov" data-profile="parody-gov-dem" tabindex="0" role="button" aria-label="View credibility details - Government Verified Democrat">
+            <div class="demo-xcred-indicator tier-gov gov-dem" data-profile="parody-gov-dem" tabindex="0" role="button" aria-label="View credibility details - Government Verified Democrat">
               <img src="assets/icons/donkey.svg" alt="Democrat" class="demo-gov-icon">
             </div>
           </div>
@@ -210,7 +210,7 @@
         <div class="demo-tweet">
           <div class="demo-tweet-avatar-container">
             <img src="assets/demo/avatar-gov-rep.svg" alt="" class="demo-tweet-avatar" aria-hidden="true">
-            <div class="demo-xcred-indicator tier-gov" data-profile="parody-gov-rep" tabindex="0" role="button" aria-label="View credibility details - Government Verified Republican">
+            <div class="demo-xcred-indicator tier-gov gov-rep" data-profile="parody-gov-rep" tabindex="0" role="button" aria-label="View credibility details - Government Verified Republican">
               <img src="assets/icons/elephant.svg" alt="Republican" class="demo-gov-icon">
             </div>
           </div>
@@ -260,7 +260,7 @@
           </div>
         </div>
       </div>
-      <p class="demo-disclaimer">⚠️ <strong>All tweets shown are 100% fictional</strong> — created solely to demonstrate XCred's features. No real accounts or people are depicted.</p>
+      <p class="demo-disclaimer"><strong>⚠️ All tweets shown are 100% fictional</strong><br><span class="disclaimer-sub">Created solely to demonstrate XCred's features. No real accounts or people are depicted.</span></p>
     </div>
     <!-- Fallback for no-JS -->
     <noscript>
@@ -270,99 +270,93 @@
     </noscript>
   </section>
 
-  <section class="tiers">
-    <h2>6-Tier Credibility System</h2>
-    <p class="section-subtitle">Quick visual indicators so you know who you're dealing with</p>
-
-    <div class="tier-list">
-      <div class="tier tier-gov">
-        <div class="tier-color"></div>
-        <div class="tier-info">
-          <strong>Government</strong>
-          <span>Government Verified</span>
+  <div class="info-sections">
+    <section class="tiers">
+      <h2>6-Tier Credibility System</h2>
+      <div class="tier-list">
+        <div class="tier tier-gov">
+          <div class="tier-color"></div>
+          <div class="tier-info">
+            <strong>Government</strong>
+            <span>Verified</span>
+          </div>
+        </div>
+        <div class="tier tier-1">
+          <div class="tier-color"></div>
+          <div class="tier-info">
+            <strong>Highest</strong>
+            <span>Strong signals</span>
+          </div>
+        </div>
+        <div class="tier tier-2">
+          <div class="tier-color"></div>
+          <div class="tier-info">
+            <strong>High</strong>
+            <span>Good signals</span>
+          </div>
+        </div>
+        <div class="tier tier-3">
+          <div class="tier-color"></div>
+          <div class="tier-info">
+            <strong>Medium</strong>
+            <span>Some issues</span>
+          </div>
+        </div>
+        <div class="tier tier-4">
+          <div class="tier-color"></div>
+          <div class="tier-info">
+            <strong>Low</strong>
+            <span>Multiple concerns</span>
+          </div>
+        </div>
+        <div class="tier tier-5">
+          <div class="tier-color"></div>
+          <div class="tier-info">
+            <strong>Suspicious</strong>
+            <span>Red flags</span>
+          </div>
+        </div>
+        <div class="tier tier-6">
+          <div class="tier-color"></div>
+          <div class="tier-info">
+            <strong>Unknown</strong>
+            <span>No data</span>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="tier tier-1">
-        <div class="tier-color"></div>
-        <div class="tier-info">
-          <strong>Highest</strong>
-          <span>Strong authenticity signals</span>
+    <section class="privacy-brief">
+      <h2>Privacy First</h2>
+      <div class="privacy-points">
+        <div class="privacy-point">
+          <span class="checkmark">✓</span>
+          <p>Uses only <strong>public</strong> X transparency data</p>
+        </div>
+        <div class="privacy-point">
+          <span class="checkmark">✓</span>
+          <p><strong>No personal data</strong> collection</p>
+        </div>
+        <div class="privacy-point">
+          <span class="checkmark">✓</span>
+          <p>Processing happens <strong>locally</strong></p>
+        </div>
+        <div class="privacy-point">
+          <span class="checkmark">✓</span>
+          <p>Optional cache to <strong>reduce API calls</strong></p>
+        </div>
+        <div class="privacy-point">
+          <span class="checkmark">✓</span>
+          <p><strong>MIT Licensed</strong> · 100% Open Source</p>
         </div>
       </div>
-
-      <div class="tier tier-2">
-        <div class="tier-color"></div>
-        <div class="tier-info">
-          <strong>High</strong>
-          <span>Good authenticity signals</span>
-        </div>
+      <div class="privacy-footer">
+        <a href="privacy.html" class="privacy-link">Privacy Policy</a>
+        <span style="margin: 0 8px;">·</span>
+        <a href="https://github.com/Kaden-Schutt/xcred" class="privacy-link" target="_blank">GitHub</a>
       </div>
-
-      <div class="tier tier-3">
-        <div class="tier-color"></div>
-        <div class="tier-info">
-          <strong>Medium</strong>
-          <span>Some inconsistencies</span>
-        </div>
-      </div>
-
-      <div class="tier tier-4">
-        <div class="tier-color"></div>
-        <div class="tier-info">
-          <strong>Low</strong>
-          <span>Multiple concerns</span>
-        </div>
-      </div>
-
-      <div class="tier tier-5">
-        <div class="tier-color"></div>
-        <div class="tier-info">
-          <strong>Suspicious</strong>
-          <span>Significant red flags</span>
-        </div>
-      </div>
-
-      <div class="tier tier-6">
-        <div class="tier-color"></div>
-        <div class="tier-info">
-          <strong>Unknown</strong>
-          <span>Insufficient data</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="privacy-brief">
-    <h2>Privacy First · Open Source</h2>
-    <div class="privacy-points">
-      <div class="privacy-point">
-        <span class="checkmark">✓</span>
-        <p>Uses only <strong>publicly available</strong> X transparency data</p>
-      </div>
-      <div class="privacy-point">
-        <span class="checkmark">✓</span>
-        <p><strong>No personal data</strong> collection</p>
-      </div>
-      <div class="privacy-point">
-        <span class="checkmark">✓</span>
-        <p>Processing happens <strong>locally</strong> in your browser</p>
-      </div>
-      <div class="privacy-point">
-        <span class="checkmark">✓</span>
-        <p>Optional shared cache to <strong>reduce API calls</strong></p>
-      </div>
-      <div class="privacy-point">
-        <span class="checkmark">✓</span>
-        <p><strong>MIT Licensed</strong> — verify exactly what the code does</p>
-      </div>
-    </div>
-    <div class="privacy-footer">
-      <a href="privacy.html" class="privacy-link">Read full Privacy Policy</a>
-      <span style="margin: 0 8px;">·</span>
-      <a href="https://github.com/Kaden-Schutt/xcred" class="privacy-link" target="_blank">View Source on GitHub</a>
-    </div>
-  </section>
+    </section>
+  </div>
 
   <section class="final-cta">
     <h2>Ready to see the truth?</h2>
@@ -371,10 +365,10 @@
 
   <footer>
     <div class="footer-content">
-      <div class="footer-brand">
-        <img src="assets/logo.png" alt="XCred" width="24" height="24">
+      <a href="index.html" class="footer-brand">
+        <img src="assets/logo.png" alt="XCred" width="32" height="32">
         <span>XCred</span>
-      </div>
+      </a>
       <div class="footer-links">
         <a href="privacy.html">Privacy Policy</a>
         <a href="support.html">Support</a>

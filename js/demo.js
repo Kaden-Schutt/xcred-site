@@ -326,6 +326,9 @@ function initFlagFallbacks() {
   });
 }
 
+// Guard to prevent double initialization
+let initialized = false;
+
 /**
  * Initialize hero tweet with random selection from timeline
  */
@@ -333,8 +336,18 @@ function initHeroTweet() {
   const heroContainer = document.getElementById('hero-tweet-container');
   const timelineTweets = document.querySelectorAll('.demo-timeline .demo-tweet');
 
-  if (!heroContainer || timelineTweets.length === 0) {
-    console.warn('Hero container or timeline tweets not found');
+  if (!heroContainer) {
+    console.warn('Hero container not found');
+    return;
+  }
+
+  // Skip if already has content (prevent double init)
+  if (heroContainer.children.length > 0) {
+    return;
+  }
+
+  if (timelineTweets.length === 0) {
+    console.warn('No timeline tweets found');
     return;
   }
 
@@ -348,19 +361,23 @@ function initHeroTweet() {
 }
 
 /**
- * Initialize everything when DOM is ready
+ * Initialize all demo functionality
  */
-document.addEventListener('DOMContentLoaded', () => {
+function initAll() {
+  if (initialized) return;
+  initialized = true;
+
   initHeroTweet();      // Must run first to clone tweet before attaching popup handlers
   initDemoPopups();
   initFlagFallbacks();
-});
+}
+
+/**
+ * Initialize everything when DOM is ready
+ */
+document.addEventListener('DOMContentLoaded', initAll);
 
 // Also initialize if script loads after DOMContentLoaded
 if (document.readyState === 'complete' || document.readyState === 'interactive') {
-  setTimeout(() => {
-    initHeroTweet();    // Must run first to clone tweet before attaching popup handlers
-    initDemoPopups();
-    initFlagFallbacks();
-  }, 0);
+  setTimeout(initAll, 0);
 }
