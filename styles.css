@@ -979,7 +979,7 @@ code.copy-link {
 .demo-disclaimer {
   background: rgba(251, 146, 60, 0.1);
   border: 1px solid rgba(251, 146, 60, 0.3);
-  border-radius: 0 0 12px 12px;
+  border-radius: 12px;
   padding: 10px 16px;
   font-size: 12px;
   color: var(--tier-4);
@@ -1091,20 +1091,13 @@ code.copy-link {
   display: block;
 }
 
-/* Government Icon */
+/* Government Icon - SVG inverted to white (matches extension) */
 .demo-gov-icon {
   width: 16px;
   height: 16px;
   object-fit: contain;
   display: block;
-}
-
-.demo-gov-icon.democrat {
-  filter: invert(27%) sepia(100%) saturate(1500%) hue-rotate(200deg) brightness(95%);
-}
-
-.demo-gov-icon.republican {
-  filter: invert(12%) sepia(100%) saturate(5000%) hue-rotate(350deg) brightness(95%);
+  filter: brightness(0) invert(1);
 }
 
 /* Tweet Body */

@@ -80,40 +80,17 @@
     </div>
 
     <div class="hero-image">
-      <!-- Interactive Demo Tweet -->
-      <div class="demo-single-tweet" role="region" aria-label="Interactive XCred demo">
-        <div class="demo-tweet">
-          <div class="demo-tweet-avatar-container">
-            <img src="assets/demo/avatar-russia.svg" alt="" class="demo-tweet-avatar" aria-hidden="true">
-            <div class="demo-xcred-indicator tier-5" data-profile="parody-russia" tabindex="0" role="button" aria-label="View credibility details for this account - Tier 5 Suspicious">
-              <img src="assets/flags/NL.svg" alt="Netherlands flag" class="demo-flag" data-country="NL">
-            </div>
-          </div>
-          <div class="demo-tweet-content">
-            <div class="demo-tweet-header">
-              <span class="demo-tweet-name">UltraMAGAPatriot4547 🇺🇸🦅</span>
-              <span class="demo-tweet-handle">@ultramagapatriot4547</span>
-              <span class="demo-tweet-time">· 2h</span>
-            </div>
-            <div class="demo-tweet-text">
-              TRUMP IS THE GREATEST PRESIDENT IN AMERICAN HISTORY! 🇺🇸🇺🇸🇺🇸 Anyone who disagrees is a traitor! MAGA FOREVER! The mainstream media is LYING to you! Wake up sheeple! #MAGA #Trump2024 #PatriotNation
-            </div>
-            <div class="demo-tweet-actions">
-              <span>💬 1.2K</span>
-              <span>🔁 3.4K</span>
-              <span>❤️ 12K</span>
-              <span>📊 89K</span>
-            </div>
-          </div>
-        </div>
-        <p class="demo-hint">👆 Click the flag to see what XCred reveals</p>
+      <p class="demo-hint">👇 Click the flag to see what XCred reveals!</p>
+      <!-- Interactive Demo Tweet - randomly selected from timeline -->
+      <div class="demo-single-tweet" id="hero-tweet-container" role="region" aria-label="Interactive XCred demo">
+        <!-- Tweet will be cloned from timeline via JavaScript -->
       </div>
+      <p class="demo-disclaimer">⚠️ <strong>All tweets shown are 100% fictional</strong> — created solely to demonstrate XCred's features. No real accounts or people are depicted.</p>
       <!-- Fallback for no-JS -->
       <noscript>
         <img src="assets/screenshot-1.png" alt="XCred showing country flags and credibility indicators on X/Twitter timeline">
       </noscript>
     </div>
-    <p class="demo-disclaimer">⚠️ <strong>All tweets shown are 100% fictional</strong> — created solely to demonstrate XCred's features. No real accounts or people are depicted.</p>
   </header>
 
   <section class="features">
@@ -148,6 +125,7 @@
 
     <!-- Interactive Demo Timeline -->
     <div class="demo-timeline-container">
+      <p class="demo-hint">👇 Click any flag to see credibility details</p>
       <div class="demo-timeline" role="region" aria-label="Scrollable XCred demo timeline">
         <!-- Tweet 1: India VPN user -->
         <div class="demo-tweet">
@@ -205,8 +183,8 @@
         <div class="demo-tweet">
           <div class="demo-tweet-avatar-container">
             <img src="assets/demo/avatar-gov-dem.svg" alt="" class="demo-tweet-avatar" aria-hidden="true">
-            <div class="demo-xcred-indicator tier-gov" data-profile="parody-gov-dem" tabindex="0" role="button" aria-label="View credibility details - Government Verified">
-              <img src="assets/flags/US.svg" alt="US flag" class="demo-flag" data-country="US">
+            <div class="demo-xcred-indicator tier-gov" data-profile="parody-gov-dem" tabindex="0" role="button" aria-label="View credibility details - Government Verified Democrat">
+              <img src="assets/icons/donkey.svg" alt="Democrat" class="demo-gov-icon">
             </div>
           </div>
           <div class="demo-tweet-content">
@@ -232,8 +210,8 @@
         <div class="demo-tweet">
           <div class="demo-tweet-avatar-container">
             <img src="assets/demo/avatar-gov-rep.svg" alt="" class="demo-tweet-avatar" aria-hidden="true">
-            <div class="demo-xcred-indicator tier-gov" data-profile="parody-gov-rep" tabindex="0" role="button" aria-label="View credibility details - Government Verified">
-              <img src="assets/flags/US.svg" alt="US flag" class="demo-flag" data-country="US">
+            <div class="demo-xcred-indicator tier-gov" data-profile="parody-gov-rep" tabindex="0" role="button" aria-label="View credibility details - Government Verified Republican">
+              <img src="assets/icons/elephant.svg" alt="Republican" class="demo-gov-icon">
             </div>
           </div>
           <div class="demo-tweet-content">
@@ -282,7 +260,6 @@
           </div>
         </div>
       </div>
-      <p class="demo-hint">👆 Click any flag to see credibility details</p>
       <p class="demo-disclaimer">⚠️ <strong>All tweets shown are 100% fictional</strong> — created solely to demonstrate XCred's features. No real accounts or people are depicted.</p>
     </div>
     <!-- Fallback for no-JS -->

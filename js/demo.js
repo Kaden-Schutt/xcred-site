@@ -327,9 +327,31 @@ function initFlagFallbacks() {
 }
 
 /**
+ * Initialize hero tweet with random selection from timeline
+ */
+function initHeroTweet() {
+  const heroContainer = document.getElementById('hero-tweet-container');
+  const timelineTweets = document.querySelectorAll('.demo-timeline .demo-tweet');
+
+  if (!heroContainer || timelineTweets.length === 0) {
+    console.warn('Hero container or timeline tweets not found');
+    return;
+  }
+
+  // Select random tweet from timeline
+  const randomIndex = Math.floor(Math.random() * timelineTweets.length);
+  const randomTweet = timelineTweets[randomIndex];
+
+  // Clone the tweet and add to hero container
+  const clonedTweet = randomTweet.cloneNode(true);
+  heroContainer.appendChild(clonedTweet);
+}
+
+/**
  * Initialize everything when DOM is ready
  */
 document.addEventListener('DOMContentLoaded', () => {
+  initHeroTweet();      // Must run first to clone tweet before attaching popup handlers
   initDemoPopups();
   initFlagFallbacks();
 });
@@ -337,6 +359,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Also initialize if script loads after DOMContentLoaded
 if (document.readyState === 'complete' || document.readyState === 'interactive') {
   setTimeout(() => {
+    initHeroTweet();    // Must run first to clone tweet before attaching popup handlers
     initDemoPopups();
     initFlagFallbacks();
   }, 0);
