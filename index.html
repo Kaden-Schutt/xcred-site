@@ -80,8 +80,40 @@
     </div>
 
     <div class="hero-image">
-      <img src="assets/screenshot-1.png" alt="XCred showing country flags and credibility indicators on X/Twitter timeline">
+      <!-- Interactive Demo Tweet -->
+      <div class="demo-single-tweet" role="region" aria-label="Interactive XCred demo">
+        <div class="demo-tweet">
+          <div class="demo-tweet-avatar-container">
+            <img src="assets/demo/avatar-russia.svg" alt="" class="demo-tweet-avatar" aria-hidden="true">
+            <div class="demo-xcred-indicator tier-5" data-profile="parody-russia" tabindex="0" role="button" aria-label="View credibility details for this account - Tier 5 Suspicious">
+              <img src="assets/flags/NL.svg" alt="Netherlands flag" class="demo-flag" data-country="NL">
+            </div>
+          </div>
+          <div class="demo-tweet-content">
+            <div class="demo-tweet-header">
+              <span class="demo-tweet-name">UltraMAGAPatriot4547 🇺🇸🦅</span>
+              <span class="demo-tweet-handle">@ultramagapatriot4547</span>
+              <span class="demo-tweet-time">· 2h</span>
+            </div>
+            <div class="demo-tweet-text">
+              TRUMP IS THE GREATEST PRESIDENT IN AMERICAN HISTORY! 🇺🇸🇺🇸🇺🇸 Anyone who disagrees is a traitor! MAGA FOREVER! The mainstream media is LYING to you! Wake up sheeple! #MAGA #Trump2024 #PatriotNation
+            </div>
+            <div class="demo-tweet-actions">
+              <span>💬 1.2K</span>
+              <span>🔁 3.4K</span>
+              <span>❤️ 12K</span>
+              <span>📊 89K</span>
+            </div>
+          </div>
+        </div>
+        <p class="demo-hint">👆 Click the flag to see what XCred reveals</p>
+      </div>
+      <!-- Fallback for no-JS -->
+      <noscript>
+        <img src="assets/screenshot-1.png" alt="XCred showing country flags and credibility indicators on X/Twitter timeline">
+      </noscript>
     </div>
+    <p class="demo-disclaimer">⚠️ <strong>All tweets shown are 100% fictional</strong> — created solely to demonstrate XCred's features. No real accounts or people are depicted.</p>
   </header>
 
   <section class="features">
@@ -114,9 +146,150 @@
       </div>
     </div>
 
-    <div class="feature-screenshot">
-      <img src="assets/screenshot-2.png" alt="XCred displaying multiple country flags on X/Twitter timeline">
+    <!-- Interactive Demo Timeline -->
+    <div class="demo-timeline-container">
+      <div class="demo-timeline" role="region" aria-label="Scrollable XCred demo timeline">
+        <!-- Tweet 1: India VPN user -->
+        <div class="demo-tweet">
+          <div class="demo-tweet-avatar-container">
+            <img src="assets/demo/avatar-india.svg" alt="" class="demo-tweet-avatar" aria-hidden="true">
+            <div class="demo-xcred-indicator tier-5" data-profile="parody-india" tabindex="0" role="button" aria-label="View credibility details - Tier 5 Suspicious">
+              <img src="assets/flags/US.svg" alt="US flag" class="demo-flag" data-country="US">
+            </div>
+          </div>
+          <div class="demo-tweet-content">
+            <div class="demo-tweet-header">
+              <span class="demo-tweet-name">WestCivilizationDefender</span>
+              <span class="demo-tweet-handle">@westcivdefender</span>
+              <span class="demo-tweet-time">· 4h</span>
+            </div>
+            <div class="demo-tweet-text">
+              MAGA is DEAD! Trump has FAILED America! Real conservatives are abandoning him! The GOP is in shambles! Time for TRUE patriots to rise! #NeverTrump #ConservativesAgainstTrump
+            </div>
+            <div class="demo-tweet-actions">
+              <span>💬 892</span>
+              <span>🔁 2.1K</span>
+              <span>❤️ 5.6K</span>
+              <span>📊 45K</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tweet 2: Venezuela user -->
+        <div class="demo-tweet">
+          <div class="demo-tweet-avatar-container">
+            <img src="assets/demo/avatar-venezuela.svg" alt="" class="demo-tweet-avatar" aria-hidden="true">
+            <div class="demo-xcred-indicator tier-4" data-profile="parody-venezuela" tabindex="0" role="button" aria-label="View credibility details - Tier 4 Low Credibility">
+              <img src="assets/flags/VE.svg" alt="Venezuela flag" class="demo-flag" data-country="VE">
+            </div>
+          </div>
+          <div class="demo-tweet-content">
+            <div class="demo-tweet-header">
+              <span class="demo-tweet-name">OpenBordersForProgress 🌎</span>
+              <span class="demo-tweet-handle">@openborders4progress</span>
+              <span class="demo-tweet-time">· 5h</span>
+            </div>
+            <div class="demo-tweet-text">
+              Biden actually SECURED the border better than any president! Trump is LYING about immigration numbers! The media won't tell you the truth! #BidenBorderSuccess #ImmigrationFacts
+            </div>
+            <div class="demo-tweet-actions">
+              <span>💬 654</span>
+              <span>🔁 1.8K</span>
+              <span>❤️ 4.2K</span>
+              <span>📊 32K</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tweet 3: Government Democrat -->
+        <div class="demo-tweet">
+          <div class="demo-tweet-avatar-container">
+            <img src="assets/demo/avatar-gov-dem.svg" alt="" class="demo-tweet-avatar" aria-hidden="true">
+            <div class="demo-xcred-indicator tier-gov" data-profile="parody-gov-dem" tabindex="0" role="button" aria-label="View credibility details - Government Verified">
+              <img src="assets/flags/US.svg" alt="US flag" class="demo-flag" data-country="US">
+            </div>
+          </div>
+          <div class="demo-tweet-content">
+            <div class="demo-tweet-header">
+              <span class="demo-tweet-name">Rep. Jane Smith 🇺🇸</span>
+              <span class="demo-tweet-handle">@RepJaneSmith</span>
+              <span class="demo-tweet-verified demo-verified-gov">✓</span>
+              <span class="demo-tweet-time">· 6h</span>
+            </div>
+            <div class="demo-tweet-text">
+              Proud to announce the Infrastructure Investment Act passed the House today! This bipartisan bill will bring thousands of jobs to our district and repair our crumbling roads and bridges. 🏗️
+            </div>
+            <div class="demo-tweet-actions">
+              <span>💬 234</span>
+              <span>🔁 1.2K</span>
+              <span>❤️ 3.8K</span>
+              <span>📊 28K</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tweet 4: Government Republican -->
+        <div class="demo-tweet">
+          <div class="demo-tweet-avatar-container">
+            <img src="assets/demo/avatar-gov-rep.svg" alt="" class="demo-tweet-avatar" aria-hidden="true">
+            <div class="demo-xcred-indicator tier-gov" data-profile="parody-gov-rep" tabindex="0" role="button" aria-label="View credibility details - Government Verified">
+              <img src="assets/flags/US.svg" alt="US flag" class="demo-flag" data-country="US">
+            </div>
+          </div>
+          <div class="demo-tweet-content">
+            <div class="demo-tweet-header">
+              <span class="demo-tweet-name">Sen. John Roberts 🇺🇸</span>
+              <span class="demo-tweet-handle">@SenJohnRoberts</span>
+              <span class="demo-tweet-verified demo-verified-gov">✓</span>
+              <span class="demo-tweet-time">· 8h</span>
+            </div>
+            <div class="demo-tweet-text">
+              Our nation's security must come first. I've introduced legislation to strengthen border enforcement and protect American families. We can have compassion AND secure borders. 🇺🇸
+            </div>
+            <div class="demo-tweet-actions">
+              <span>💬 445</span>
+              <span>🔁 2.3K</span>
+              <span>❤️ 6.1K</span>
+              <span>📊 41K</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tweet 5: Legitimate American -->
+        <div class="demo-tweet">
+          <div class="demo-tweet-avatar-container">
+            <img src="assets/demo/avatar-legitimate.svg" alt="" class="demo-tweet-avatar" aria-hidden="true">
+            <div class="demo-xcred-indicator tier-1" data-profile="parody-legitimate" tabindex="0" role="button" aria-label="View credibility details - Tier 1 Highly Credible">
+              <img src="assets/flags/US.svg" alt="US flag" class="demo-flag" data-country="US">
+            </div>
+          </div>
+          <div class="demo-tweet-content">
+            <div class="demo-tweet-header">
+              <span class="demo-tweet-name">Sarah from Ohio</span>
+              <span class="demo-tweet-handle">@sarahohio_real</span>
+              <span class="demo-tweet-verified demo-verified-blue">✓</span>
+              <span class="demo-tweet-time">· 12h</span>
+            </div>
+            <div class="demo-tweet-text">
+              Just got back from voting! Regardless of which party you support, please get out there and make your voice heard. Democracy works when we all participate. 🗳️ #VoteLocal
+            </div>
+            <div class="demo-tweet-actions">
+              <span>💬 89</span>
+              <span>🔁 234</span>
+              <span>❤️ 1.2K</span>
+              <span>📊 8.9K</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="demo-hint">👆 Click any flag to see credibility details</p>
     </div>
+    <!-- Fallback for no-JS -->
+    <noscript>
+      <div class="feature-screenshot">
+        <img src="assets/screenshot-2.png" alt="XCred displaying multiple country flags on X/Twitter timeline">
+      </div>
+    </noscript>
   </section>
 
   <section class="tiers">
@@ -252,5 +425,7 @@
       }
     });
   </script>
+  <!-- Demo popup functionality -->
+  <script src="js/demo.js"></script>
 </body>
 </html>

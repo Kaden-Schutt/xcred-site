@@ -923,3 +923,619 @@ code.copy-link {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ============================================
+   INTERACTIVE DEMO COMPONENTS
+   Fake tweet demos matching extension 1:1
+   ============================================ */
+
+/* Demo Container */
+.demo-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Demo Hint Banner */
+.demo-hint {
+  background: rgba(29, 155, 240, 0.1);
+  border: 1px solid rgba(29, 155, 240, 0.3);
+  border-radius: 12px 12px 0 0;
+  padding: 12px 16px;
+  font-size: 14px;
+  color: var(--accent);
+  text-align: center;
+  animation: hintPulse 2s ease-in-out infinite;
+}
+
+/* Disclaimer banner for fictional content */
+.demo-disclaimer {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 13px;
+  color: #EF4444;
+  text-align: center;
+  margin-top: 24px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@keyframes hintPulse {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+/* Demo Disclaimer Banner */
+.demo-disclaimer {
+  background: rgba(251, 146, 60, 0.1);
+  border: 1px solid rgba(251, 146, 60, 0.3);
+  border-radius: 0 0 12px 12px;
+  padding: 10px 16px;
+  font-size: 12px;
+  color: var(--tier-4);
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Single Tweet Demo (Hero) */
+.demo-single-tweet {
+  max-width: 600px;
+  margin: 2rem auto;
+  background: #000000;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6),
+              0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* Fake Tweet Structure */
+.demo-tweet {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  border-bottom: 1px solid var(--border-color);
+  transition: background 0.2s ease;
+}
+
+.demo-tweet:last-child {
+  border-bottom: none;
+}
+
+.demo-tweet:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* Avatar Column */
+.demo-avatar-col {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.demo-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667 0%, #444 100%);
+}
+
+/* XCred Indicator (matches extension exactly) */
+.demo-xcred-indicator {
+  margin-top: 4px;
+  padding: 2px;
+  border-radius: 4px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+
+.demo-xcred-indicator:hover {
+  transform: scale(1.15);
+}
+
+.demo-xcred-indicator:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Tier Colors (exact match to extension) */
+.demo-xcred-indicator.tier-1 { border-color: var(--tier-1); }
+.demo-xcred-indicator.tier-1:hover { box-shadow: 0 0 12px rgba(29, 161, 242, 0.4); }
+
+.demo-xcred-indicator.tier-2 { border-color: var(--tier-2); }
+.demo-xcred-indicator.tier-2:hover { box-shadow: 0 0 12px rgba(23, 191, 99, 0.4); }
+
+.demo-xcred-indicator.tier-3 { border-color: var(--tier-3); }
+.demo-xcred-indicator.tier-3:hover { box-shadow: 0 0 12px rgba(250, 204, 21, 0.4); }
+
+.demo-xcred-indicator.tier-4 { border-color: var(--tier-4); }
+.demo-xcred-indicator.tier-4:hover { box-shadow: 0 0 12px rgba(251, 146, 60, 0.4); }
+
+.demo-xcred-indicator.tier-5 { border-color: var(--tier-5); }
+.demo-xcred-indicator.tier-5:hover { box-shadow: 0 0 12px rgba(239, 68, 68, 0.4); }
+
+.demo-xcred-indicator.tier-6 { border-color: var(--tier-6); opacity: 0.7; }
+.demo-xcred-indicator.tier-6:hover { box-shadow: 0 0 12px rgba(156, 163, 175, 0.4); }
+
+.demo-xcred-indicator.tier-gov { border-color: var(--tier-gov); }
+.demo-xcred-indicator.tier-gov:hover { box-shadow: 0 0 12px rgba(192, 192, 192, 0.4); }
+
+/* Flag Image */
+.demo-flag {
+  width: 22px;
+  height: 15px;
+  border-radius: 2px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Government Icon */
+.demo-gov-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  display: block;
+}
+
+.demo-gov-icon.democrat {
+  filter: invert(27%) sepia(100%) saturate(1500%) hue-rotate(200deg) brightness(95%);
+}
+
+.demo-gov-icon.republican {
+  filter: invert(12%) sepia(100%) saturate(5000%) hue-rotate(350deg) brightness(95%);
+}
+
+/* Tweet Body */
+.demo-tweet-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.demo-tweet-header {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+
+.demo-name {
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: 15px;
+}
+
+.demo-verified,
+.demo-tweet-verified {
+  font-size: 14px;
+  margin-left: 2px;
+}
+
+.demo-verified-blue {
+  color: var(--tier-1);
+}
+
+.demo-verified-gov {
+  color: var(--tier-gov);
+}
+
+.demo-handle, .demo-dot, .demo-time {
+  color: var(--text-secondary);
+  font-size: 15px;
+}
+
+.demo-tweet-text {
+  color: var(--text-primary);
+  font-size: 15px;
+  line-height: 1.4;
+  margin-bottom: 12px;
+  word-wrap: break-word;
+}
+
+.demo-tweet-actions {
+  display: flex;
+  gap: 32px;
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+/* Timeline Demo (replaces screenshot-2) */
+.demo-timeline {
+  max-width: 600px;
+  margin: 3rem auto;
+  background: #000;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+}
+
+.demo-timeline-header {
+  display: flex;
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+}
+
+.demo-timeline-tab {
+  flex: 1;
+  padding: 16px;
+  text-align: center;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s;
+  position: relative;
+}
+
+.demo-timeline-tab.active {
+  color: var(--text-primary);
+}
+
+.demo-timeline-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 56px;
+  height: 4px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+.demo-timeline-scroll {
+  max-height: 500px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+.demo-timeline-scroll::-webkit-scrollbar {
+  width: 12px;
+}
+
+.demo-timeline-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.demo-timeline-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  border: 3px solid #000;
+}
+
+.demo-timeline-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* ============================================
+   POPUP STYLES (1:1 match with extension)
+   ============================================ */
+
+.demo-popup {
+  position: fixed;
+  z-index: 10000;
+  min-width: 280px;
+  max-width: 320px;
+  background: #000000;
+  border-radius: 16px;
+  box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 15px,
+              rgba(255, 255, 255, 0.15) 0px 0px 3px 1px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 15px;
+  overflow: hidden;
+  color: var(--text-primary);
+  border: none;
+  padding: 0;
+}
+
+.demo-popup::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.demo-popup[open] {
+  animation: popupSlideIn 0.2s ease-out;
+}
+
+@keyframes popupSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.demo-popup-header {
+  padding: 16px;
+  font-weight: 700;
+  font-size: 15px;
+  text-align: center;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  border-radius: 12px 12px 0 0;
+}
+
+.demo-popup-header.tier-1 { background: rgba(29, 161, 242, 0.15); color: var(--tier-1); }
+.demo-popup-header.tier-2 { background: rgba(23, 191, 99, 0.15); color: var(--tier-2); }
+.demo-popup-header.tier-3 { background: rgba(250, 204, 21, 0.15); color: var(--tier-3); }
+.demo-popup-header.tier-4 { background: rgba(251, 146, 60, 0.15); color: var(--tier-4); }
+.demo-popup-header.tier-5 { background: rgba(239, 68, 68, 0.15); color: var(--tier-5); }
+.demo-popup-header.tier-6 { background: rgba(156, 163, 175, 0.15); color: var(--text-secondary); }
+.demo-popup-header.tier-gov { background: rgba(192, 192, 192, 0.15); color: var(--tier-gov); }
+
+.demo-popup-title {
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: -0.2px;
+}
+
+.demo-popup-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  cursor: pointer;
+  font-size: 20px;
+  color: var(--text-primary);
+  border-radius: 50%;
+  transition: background 0.2s ease;
+  background: none;
+  border: none;
+}
+
+.demo-popup-close:hover {
+  background: rgba(239, 243, 244, 0.1);
+}
+
+.demo-popup-status {
+  padding: 12px 16px;
+  font-weight: 700;
+  font-size: 14px;
+  text-align: left;
+  letter-spacing: 0.2px;
+}
+
+.demo-popup-status.tier-1 { background: rgba(29, 161, 242, 0.1); color: var(--tier-1); }
+.demo-popup-status.tier-2 { background: rgba(23, 191, 99, 0.1); color: var(--tier-2); }
+.demo-popup-status.tier-3 { background: rgba(250, 204, 21, 0.1); color: var(--tier-3); }
+.demo-popup-status.tier-4 { background: rgba(251, 146, 60, 0.1); color: var(--tier-4); }
+.demo-popup-status.tier-5 { background: rgba(239, 68, 68, 0.1); color: var(--tier-5); font-weight: 800; }
+.demo-popup-status.tier-6 { background: rgba(156, 163, 175, 0.1); color: var(--text-secondary); }
+.demo-popup-status.tier-gov { background: rgba(192, 192, 192, 0.1); color: var(--tier-gov); }
+
+/* Party affiliation styles */
+.demo-popup-party {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.demo-popup-party.democrat {
+  background: rgba(0, 82, 165, 0.1);
+  color: #4da3ff;
+}
+
+.demo-popup-party.republican {
+  background: rgba(191, 10, 48, 0.1);
+  color: #ff6680;
+}
+
+.demo-popup-party-icon,
+.demo-party-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.demo-popup-party.democrat .demo-popup-party-icon {
+  filter: invert(27%) sepia(100%) saturate(1500%) hue-rotate(200deg) brightness(95%);
+}
+
+.demo-popup-party.republican .demo-popup-party-icon {
+  filter: invert(12%) sepia(100%) saturate(5000%) hue-rotate(350deg) brightness(95%);
+}
+
+.demo-popup-vpn-warning,
+.demo-popup-warning {
+  padding: 12px 16px;
+  background: rgba(255, 122, 0, 0.15);
+  border-left: 3px solid #ff7a00;
+  color: #ff7a00;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.demo-popup-content {
+  padding: 16px;
+}
+
+.demo-popup-row {
+  padding: 12px 0;
+  font-size: 15px;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.demo-popup-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.demo-popup-row:first-child {
+  padding-top: 0;
+}
+
+.demo-popup-row strong {
+  color: var(--text-secondary);
+  font-weight: 400;
+  font-size: 13px;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.demo-popup-score {
+  padding: 12px 16px;
+  background: rgb(22, 24, 28);
+  border-top: 1px solid var(--border-color);
+}
+
+.demo-popup-score-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.demo-popup-score-header strong {
+  color: var(--text-secondary);
+  font-weight: 400;
+  font-size: 13px;
+}
+
+.demo-score-factors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.demo-factor {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  opacity: 0;
+  animation: factorFadeIn 0.3s ease forwards;
+}
+
+.demo-factor:nth-child(1) { animation-delay: 0.05s; }
+.demo-factor:nth-child(2) { animation-delay: 0.1s; }
+.demo-factor:nth-child(3) { animation-delay: 0.15s; }
+.demo-factor:nth-child(4) { animation-delay: 0.2s; }
+.demo-factor:nth-child(5) { animation-delay: 0.25s; }
+.demo-factor:nth-child(6) { animation-delay: 0.3s; }
+
+@keyframes factorFadeIn {
+  from { opacity: 0; transform: translateX(-8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.demo-factor.positive {
+  background: rgba(23, 191, 99, 0.25);
+  color: var(--tier-2);
+}
+
+.demo-factor.negative {
+  background: rgba(239, 68, 68, 0.25);
+  color: var(--tier-5);
+}
+
+.demo-factor.neutral {
+  background: rgba(156, 163, 175, 0.25);
+  color: var(--text-secondary);
+}
+
+/* Score Breakdown Section */
+.demo-popup-breakdown {
+  padding: 16px;
+  background: rgb(22, 24, 28);
+  border-top: 1px solid var(--border-color);
+}
+
+.demo-popup-breakdown strong {
+  display: block;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.demo-popup-breakdown ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.demo-popup-breakdown li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  font-size: 13px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.demo-popup-breakdown li:last-child {
+  border-bottom: none;
+}
+
+.demo-popup-breakdown li.positive {
+  color: var(--tier-2);
+}
+
+.demo-popup-breakdown li.negative {
+  color: var(--tier-5);
+}
+
+.demo-popup-footer {
+  padding: 12px 16px;
+  background: rgb(22, 24, 28);
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+/* Emoji fallback for flags */
+.demo-flag-emoji {
+  font-size: 14px;
+  line-height: 1;
+}
+
+/* Responsive adjustments for demo */
+@media (max-width: 768px) {
+  .demo-single-tweet,
+  .demo-timeline {
+    margin: 1rem;
+    border-radius: 12px;
+  }
+
+  .demo-popup {
+    min-width: 260px;
+    max-width: calc(100vw - 32px);
+  }
+}
+
+/* Reduced motion for demo animations */
+@media (prefers-reduced-motion: reduce) {
+  .demo-hint,
+  .demo-popup[open],
+  .demo-factor,
+  .demo-xcred-indicator {
+    animation: none !important;
+  }
+
+  .demo-factor {
+    opacity: 1;
+    transform: none;
+  }
+}
