@@ -1,135 +1,102 @@
 /**
  * XCred Demo - Interactive Tweet Popup Logic
  * All tweets and profiles shown are 100% FICTIONAL for demonstration purposes only.
+ * Popup design matches the real XCred extension 1:1
  */
 
 const DEMO_PROFILES = {
   'parody-russia': {
+    isGov: false,
     status: 'SUSPICIOUS',
     statusClass: 'tier-5',
     tier: 5,
     vpn: true,
-    vpnWarning: 'VPN/Proxy detected - Location may be masked',
+    vpnWarning: 'X has indicated this account may be connecting via a proxy or VPN, which may change the displayed location.',
     accountBasedIn: 'Netherlands',
-    accountBasedInNote: '(IP-derived)',
-    connectedVia: 'Russian Federation App Store (iOS)',
+    connectedVia: 'Russian Federation App Store',
     accountAge: '47 days',
     usernameChanges: 4,
     verification: 'None',
     score: -6,
     factors: [
-      { text: 'Web platform', value: '-1', negative: true },
-      { text: 'Location mismatch (NL app, RU store)', value: '-3', negative: true },
-      { text: 'VPN detected from suspicious region', value: '-4', negative: true },
-      { text: 'Multiple username changes (4)', value: '-2', negative: true },
-      { text: 'Account less than 90 days old', value: '-1', negative: true },
-      { text: 'Unverified account', value: '+0', negative: false }
+      { text: 'Web platform (less trusted)', value: '-1', positive: false },
+      { text: 'Location mismatch (NL IP, RU store)', value: '-3', positive: false },
+      { text: 'VPN detected from suspicious region', value: '-4', positive: false },
+      { text: 'Multiple username changes (4)', value: '-2', positive: false }
     ]
   },
   'parody-india': {
+    isGov: false,
     status: 'SUSPICIOUS',
     statusClass: 'tier-5',
     tier: 5,
     vpn: true,
-    vpnWarning: 'VPN/Proxy detected - Location may be masked',
+    vpnWarning: 'X has indicated this account may be connecting via a proxy or VPN, which may change the displayed location.',
     accountBasedIn: 'United States',
-    accountBasedInNote: '(IP-derived)',
     connectedVia: 'India Google Play (Android)',
     accountAge: '2 months',
     usernameChanges: 3,
     verification: 'None',
     score: -4,
     factors: [
-      { text: 'Android platform', value: '+0', negative: false },
-      { text: 'Location mismatch (US IP, IN store)', value: '-3', negative: true },
-      { text: 'VPN detected', value: '-2', negative: true },
-      { text: 'Multiple username changes (3)', value: '-1', negative: true },
-      { text: 'Account less than 90 days old', value: '-1', negative: true },
-      { text: 'Unverified account', value: '+0', negative: false }
+      { text: 'Android platform', value: '+0', positive: true },
+      { text: 'Location mismatch (US IP, IN store)', value: '-3', positive: false },
+      { text: 'VPN detected', value: '-2', positive: false },
+      { text: 'Multiple username changes (3)', value: '-1', positive: false }
     ]
   },
   'parody-venezuela': {
+    isGov: false,
     status: 'LOW CREDIBILITY',
     statusClass: 'tier-4',
     tier: 4,
     vpn: false,
     accountBasedIn: 'Venezuela',
-    accountBasedInNote: '(IP-derived)',
-    connectedVia: 'Web Browser',
+    connectedVia: 'Web',
     accountAge: '8 months',
     usernameChanges: 2,
     verification: 'None',
     score: -1,
     factors: [
-      { text: 'Web platform', value: '-1', negative: true },
-      { text: 'Location consistent', value: '+1', negative: false },
-      { text: 'Username changes (2)', value: '-1', negative: true },
-      { text: 'Account age 6-12 months', value: '+0', negative: false },
-      { text: 'Unverified account', value: '+0', negative: false }
+      { text: 'Web platform (less trusted)', value: '-1', positive: false },
+      { text: 'Location consistent', value: '+1', positive: true },
+      { text: 'Username changes (2)', value: '-1', positive: false }
     ]
   },
   'parody-gov-dem': {
-    status: 'GOVERNMENT',
+    isGov: true,
+    status: 'Government Verified',
     statusClass: 'tier-gov',
     tier: 'gov',
-    vpn: false,
-    accountBasedIn: 'United States',
-    accountBasedInNote: '(Verified)',
-    connectedVia: 'iOS App Store (United States)',
-    accountAge: '12 years',
-    usernameChanges: 0,
-    verification: 'Government Official',
-    party: 'Democrat',
+    party: 'Democratic Party',
     partyIcon: 'donkey',
-    score: 'N/A',
-    factors: [
-      { text: 'Government verified account', value: 'GOV', negative: false },
-      { text: 'iOS platform', value: '+1', negative: false },
-      { text: 'Location verified', value: '+2', negative: false },
-      { text: 'Account age 10+ years', value: '+3', negative: false },
-      { text: 'No username changes', value: '+1', negative: false }
-    ]
+    partyClass: 'democrat'
   },
   'parody-gov-rep': {
-    status: 'GOVERNMENT',
+    isGov: true,
+    status: 'Government Verified',
     statusClass: 'tier-gov',
     tier: 'gov',
-    vpn: false,
-    accountBasedIn: 'United States',
-    accountBasedInNote: '(Verified)',
-    connectedVia: 'iOS App Store (United States)',
-    accountAge: '9 years',
-    usernameChanges: 0,
-    verification: 'Government Official',
-    party: 'Republican',
+    party: 'Republican Party',
     partyIcon: 'elephant',
-    score: 'N/A',
-    factors: [
-      { text: 'Government verified account', value: 'GOV', negative: false },
-      { text: 'iOS platform', value: '+1', negative: false },
-      { text: 'Location verified', value: '+2', negative: false },
-      { text: 'Account age 5+ years', value: '+3', negative: false },
-      { text: 'No username changes', value: '+1', negative: false }
-    ]
+    partyClass: 'republican'
   },
   'parody-legitimate': {
-    status: 'HIGHLY CREDIBLE',
+    isGov: false,
+    status: 'Highest Credibility',
     statusClass: 'tier-1',
     tier: 1,
     vpn: false,
     accountBasedIn: 'United States',
-    accountBasedInNote: '(IP-derived)',
-    connectedVia: 'iOS App Store (United States)',
+    connectedVia: 'United States App Store',
     accountAge: '6 years',
-    usernameChanges: 0,
-    verification: 'X Blue',
-    score: 8,
+    usernameChanges: 2,
+    verification: 'Blue verified',
+    score: 6,
     factors: [
-      { text: 'iOS platform', value: '+1', negative: false },
-      { text: 'Location match (US IP, US store)', value: '+2', negative: false },
-      { text: 'Account age 5+ years', value: '+3', negative: false },
-      { text: 'No username changes', value: '+1', negative: false },
-      { text: 'X Blue verified', value: '+2', negative: false }
+      { text: 'iOS platform', value: '+1', positive: true },
+      { text: 'iOS + geo match', value: '+3', positive: true },
+      { text: 'Blue verified', value: '+2', positive: true }
     ]
   }
 };
@@ -141,139 +108,172 @@ function generatePopupHTML(profileId) {
   const profile = DEMO_PROFILES[profileId];
   if (!profile) return '';
 
-  const isGov = profile.tier === 'gov';
+  // Government account popup
+  if (profile.isGov) {
+    return `
+      <div class="xloc-popup-header">
+        <span class="xloc-popup-title">Government Account</span>
+        <button class="xloc-popup-close" aria-label="Close">&times;</button>
+      </div>
+      <div class="xloc-popup-status ${profile.statusClass}">${profile.status}</div>
+      <div class="xloc-popup-body">
+        <div class="xloc-popup-row xloc-party-row ${profile.partyClass}">
+          <img src="assets/icons/${profile.partyIcon}.svg" alt="" class="xloc-party-icon">
+          <span>${profile.party}</span>
+        </div>
+      </div>
+      <div class="xloc-popup-footer">This account has been verified by X as an official government account.</div>
+    `;
+  }
 
+  // Regular account popup
   let html = `
-    <div class="demo-popup-header ${profile.statusClass}">
-      ${profile.status}
+    <div class="xloc-popup-header">
+      <span class="xloc-popup-title">Location Info</span>
+      <button class="xloc-popup-close" aria-label="Close">&times;</button>
     </div>
-    <div class="demo-popup-content">
+    <div class="xloc-popup-status ${profile.statusClass}">${profile.status}</div>
   `;
 
   // VPN Warning
   if (profile.vpn) {
     html += `
-      <div class="demo-popup-warning">
-        ⚠️ ${profile.vpnWarning}
+      <div class="xloc-popup-warning">
+        <strong>⚠ Warning:</strong> ${profile.vpnWarning}
       </div>
     `;
   }
 
-  // Government party affiliation
-  if (isGov && profile.party) {
-    html += `
-      <div class="demo-popup-row demo-popup-party">
-        <strong>Party Affiliation</strong>
-        <span>
-          <img src="assets/icons/${profile.partyIcon}.svg" alt="${profile.party}" class="demo-party-icon">
-          ${profile.party}
-        </span>
-      </div>
-    `;
-  }
+  html += `<div class="xloc-popup-body">`;
 
   // Account Based In
   html += `
-    <div class="demo-popup-row">
-      <strong>Account based in</strong>
-      <span>${profile.accountBasedIn} ${profile.accountBasedInNote}</span>
+    <div class="xloc-popup-row">
+      <span class="xloc-row-label">Account based in</span>
+      <span class="xloc-row-value">${profile.accountBasedIn}</span>
     </div>
   `;
 
   // Connected Via
   html += `
-    <div class="demo-popup-row">
-      <strong>Connected via</strong>
-      <span>${profile.connectedVia}</span>
-    </div>
-  `;
-
-  // Account Age
-  html += `
-    <div class="demo-popup-row">
-      <strong>Account age</strong>
-      <span>${profile.accountAge}</span>
+    <div class="xloc-popup-row">
+      <span class="xloc-row-label">Connected via</span>
+      <span class="xloc-row-value">${profile.connectedVia}</span>
     </div>
   `;
 
   // Username Changes
   html += `
-    <div class="demo-popup-row">
-      <strong>Username changes</strong>
-      <span>${profile.usernameChanges}</span>
+    <div class="xloc-popup-row">
+      <span class="xloc-row-label">Username changes</span>
+      <span class="xloc-row-value">${profile.usernameChanges}</span>
     </div>
   `;
 
-  // Verification Status
+  // Verification
   html += `
-    <div class="demo-popup-row">
-      <strong>Verification</strong>
-      <span>${profile.verification}</span>
+    <div class="xloc-popup-row">
+      <span class="xloc-row-label">Verification</span>
+      <span class="xloc-row-value">${profile.verification}</span>
     </div>
   `;
 
-  // Score (not shown for government accounts)
-  if (!isGov) {
-    html += `
-      <div class="demo-popup-row demo-popup-score">
-        <strong>Credibility Score</strong>
-        <span class="${profile.statusClass}">${profile.score}</span>
-      </div>
-    `;
+  // Credibility Score
+  html += `
+    <div class="xloc-popup-row xloc-score-row">
+      <span class="xloc-row-label">Credibility Score</span>
+      <span class="xloc-row-value xloc-score ${profile.statusClass}">${profile.score > 0 ? '+' : ''}${profile.score}</span>
+    </div>
+  `;
+
+  // Score Factors (as pills)
+  if (profile.factors && profile.factors.length > 0) {
+    html += `<div class="xloc-factors">`;
+    profile.factors.forEach(factor => {
+      const pillClass = factor.positive ? 'positive' : 'negative';
+      html += `<span class="xloc-factor ${pillClass}">${factor.value} ${factor.text}</span>`;
+    });
+    html += `</div>`;
   }
-
-  // Score Breakdown
-  html += `
-    <div class="demo-popup-breakdown">
-      <strong>Score Breakdown</strong>
-      <ul>
-  `;
-
-  profile.factors.forEach(factor => {
-    const className = factor.negative ? 'negative' : 'positive';
-    html += `<li class="${className}"><span>${factor.text}</span><span>${factor.value}</span></li>`;
-  });
-
-  html += `
-      </ul>
-    </div>
-  `;
 
   html += `</div>`;
 
+  // Footer
+  html += `<div class="xloc-popup-footer">Data from X's account transparency info</div>`;
+
   return html;
+}
+
+// Currently open popup element
+let activePopup = null;
+
+/**
+ * Close any open popup
+ */
+function closePopup() {
+  if (activePopup) {
+    activePopup.remove();
+    activePopup = null;
+  }
+}
+
+/**
+ * Show popup below the indicator
+ */
+function showPopup(indicator, profileId) {
+  closePopup();
+
+  const popup = document.createElement('div');
+  popup.className = 'xloc-popup';
+  popup.innerHTML = generatePopupHTML(profileId);
+
+  // Position popup below the indicator
+  document.body.appendChild(popup);
+
+  const rect = indicator.getBoundingClientRect();
+  const popupRect = popup.getBoundingClientRect();
+
+  // Position below and slightly to the right of the indicator
+  let left = rect.left + window.scrollX - 10;
+  let top = rect.bottom + window.scrollY + 8;
+
+  // Ensure popup doesn't go off screen
+  if (left + popupRect.width > window.innerWidth) {
+    left = window.innerWidth - popupRect.width - 20;
+  }
+  if (left < 10) left = 10;
+
+  popup.style.left = `${left}px`;
+  popup.style.top = `${top}px`;
+
+  // Add close button handler
+  const closeBtn = popup.querySelector('.xloc-popup-close');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closePopup();
+    });
+  }
+
+  activePopup = popup;
+
+  // Close on click outside
+  setTimeout(() => {
+    document.addEventListener('click', handleOutsideClick);
+  }, 10);
+}
+
+function handleOutsideClick(e) {
+  if (activePopup && !activePopup.contains(e.target) && !e.target.closest('.demo-xcred-indicator')) {
+    closePopup();
+    document.removeEventListener('click', handleOutsideClick);
+  }
 }
 
 /**
  * Initialize demo popup functionality
  */
 function initDemoPopups() {
-  // Get or create the dialog element
-  let dialog = document.getElementById('demo-popup-dialog');
-  if (!dialog) {
-    dialog = document.createElement('dialog');
-    dialog.id = 'demo-popup-dialog';
-    dialog.className = 'demo-popup';
-    dialog.innerHTML = '<div class="demo-popup-inner"></div>';
-    document.body.appendChild(dialog);
-  }
-
-  const popupInner = dialog.querySelector('.demo-popup-inner');
-
-  // Close on backdrop click
-  dialog.addEventListener('click', (e) => {
-    if (e.target === dialog) {
-      dialog.close();
-    }
-  });
-
-  // Close on ESC key (native dialog behavior, but ensure it works)
-  dialog.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      dialog.close();
-    }
-  });
-
   // Attach click handlers to all demo indicators
   document.querySelectorAll('.demo-xcred-indicator').forEach(indicator => {
     indicator.addEventListener('click', (e) => {
@@ -286,14 +286,7 @@ function initDemoPopups() {
         return;
       }
 
-      // Generate and insert popup content
-      popupInner.innerHTML = generatePopupHTML(profileId);
-
-      // Show the dialog
-      dialog.showModal();
-
-      // Add animation class
-      dialog.classList.add('show');
+      showPopup(indicator, profileId);
     });
 
     // Keyboard accessibility
@@ -305,20 +298,21 @@ function initDemoPopups() {
     });
   });
 
-  // Remove animation class when dialog closes
-  dialog.addEventListener('close', () => {
-    dialog.classList.remove('show');
+  // Close on ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closePopup();
+    }
   });
 }
 
 /**
- * Flag fallback handling - load from local assets first
+ * Flag fallback handling
  */
 function initFlagFallbacks() {
   document.querySelectorAll('.demo-flag').forEach(flag => {
     flag.addEventListener('error', function() {
       const countryCode = this.dataset.country;
-      // Fallback to emoji if local SVG fails
       const emojiMap = {
         'US': '🇺🇸', 'RU': '🇷🇺', 'IN': '🇮🇳', 'VE': '🇻🇪', 'NL': '🇳🇱'
       };
