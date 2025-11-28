@@ -284,7 +284,7 @@
       <p>Your data, your control</p>
     </div>
 
-    <p class="updated">Last updated: November 25, 2025</p>
+    <p class="updated">Last updated: November 27, 2025</p>
 
     <!-- Overview -->
     <h2 class="section-header">Overview</h2>
@@ -343,6 +343,13 @@
           <p>A randomly generated identifier (e.g., "xcred_abc123") is created on first install and stored locally. This helps prevent spam and abuse of the shared cache. No personal information is tied to this ID.</p>
         </div>
       </details>
+
+      <details>
+        <summary>P2P Cache (Optional)</summary>
+        <div class="faq-content">
+          <p>If "P2P Sync" is enabled in settings, profile data is shared peer-to-peer with other XCred users via a decentralized relay network. This reduces load on our servers and X's API. P2P data is validated through peer consensus before being accepted. You can disable this anytime in extension settings.</p>
+        </div>
+      </details>
     </div>
 
     <!-- Data Security -->
@@ -378,6 +385,11 @@
         <p>Turn off shared caching in extension settings</p>
       </div>
       <div class="control-card">
+        <div class="icon">🌐</div>
+        <h3>Disable P2P Sync</h3>
+        <p>Turn off peer-to-peer caching in extension settings</p>
+      </div>
+      <div class="control-card">
         <div class="icon">🗑️</div>
         <h3>Clear Local Cache</h3>
         <p>Delete all cached data via extension settings</p>
@@ -396,6 +408,13 @@
         <summary>Supabase (Remote Cache)</summary>
         <div class="faq-content">
           <p>Used for the optional shared profile cache. Stores only public profile transparency data (location, platform, verification status). No personal user data is stored.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Gun.js P2P Network (Optional)</summary>
+        <div class="faq-content">
+          <p>Used for optional peer-to-peer profile caching. Connects to a relay server to share cached profile data with other XCred users. Only public profile transparency data is shared. No personal user data is transmitted. Can be disabled via "P2P Sync" toggle in settings.</p>
         </div>
       </details>
 
